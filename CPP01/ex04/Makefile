@@ -1,6 +1,6 @@
-NAME = a.out
+NAME = file
 
-SRCS = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
+SRCS = main.cpp tool.cpp
 
 CC = c++ -std=c++98
 

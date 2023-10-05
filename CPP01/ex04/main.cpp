@@ -10,31 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include <iostream>
-#include <fstream>
-
-
-int cheak_error(char **tab)
-{
-    int i = 0;
-    while (i < 4) 
-    {
-        if(tab[i][0] == '\0')
-            return 0;
-        i++;
-    }
-    return 1;
-}
-
-std::string core(std::string old, std::string new, std::string line)
-{
-
-}
-
-
-
-
+#include "tool.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -62,11 +38,22 @@ int main(int argc, char *argv[])
 	            std::cout << "File not found!"<<std::endl;
                 return 1;
             }
+            std::ofstream file2;
+            filename = filename + ".replace";
+            file2.open(filename);
+            if (!file2.is_open()) 
+            {
+                std::cout<<"error in opening the file"<<std::endl;
+                return 1;
+            }
             std::string line;
             while (std::getline(file, line))
             {
-                line = core(argv[2], argvr[3], line);
-            }   
+                line = core(argv[2], argv[3], line);
+                file2<<line<<std::endl;
+            }
+            file.close();
+            file2.close();
         }    
     }
     return 0;
