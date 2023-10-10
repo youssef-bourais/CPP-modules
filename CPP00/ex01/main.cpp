@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:19:58 by ybourais          #+#    #+#             */
-/*   Updated: 2023/09/25 15:50:25 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/10 05:00:41 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int is_digit(char c)
         return 1;
     return 0;
 }
-
-
 
 int is_number(std::string str)
 {

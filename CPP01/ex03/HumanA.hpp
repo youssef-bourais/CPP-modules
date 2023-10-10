@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:28:32 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/02 15:26:56 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/10 05:02:50 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define HUMANA_HPP
 
 #include "Weapon.hpp"
+
 
 class HumanA
 {
