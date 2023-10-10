@@ -6,18 +6,20 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:49:32 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/07 23:39:02 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/10 07:48:58 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iomanip>
 
+
 int main()
 {
-    Fixed a;
+    Fixed a(123);
     Fixed const e(3.4f);
 
-    std::cout<<std::fixed << std::setprecision(1)  << e.toFloat()<<std::endl;
 
+    float nbr = a.toFloat();
+    std::cout<<nbr<<std::endl;
 }
