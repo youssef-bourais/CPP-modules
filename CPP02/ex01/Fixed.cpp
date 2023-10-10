@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:58:46 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/07 23:36:07 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/10 04:50:47 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ Fixed::Fixed(Fixed const &src)
 {
     std::cout<<"copy constructor called"<<std::endl;
     *this = src;
-    //this->integer = src.integer;
 }
 
 Fixed::Fixed(const int integer)
@@ -67,4 +66,18 @@ float Fixed::toFloat(void) const
 {
     return static_cast<float>(integer);
 }
+
+std::ostream &operator<<(std::ostream &os, const Fixed &Fixed)
+{
+
+
+
+    return os;
+}
+
+
+
+
+
+
 

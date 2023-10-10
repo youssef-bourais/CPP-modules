@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:58:57 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/07 18:59:20 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/10 04:52:10 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ class Fixed
         float toFloat( void ) const;
 };
 
-
-
-
+std::ostream &operator<<(std::ostream &os, const Fixed &Fixed);
 
 #endif
 

@@ -1,59 +1,116 @@
 
 #include <iostream>
 
-class position
+
+
+class Position
 {
     private:
-
         int x;
         int y;
-
     public:
-
-        position(int xz, int yz): x(xz), y(yz)
-        {}
-        position add(const position &other) const
+        Position() : x(0), y(0)
         {
-            return position(x + other.x, y + other.y);
+            std::cout<<"constructore called"<<std::endl;
         }
-        position multiple(const position &other) const
+        Position(int x, int y): x(x), y(y)
         {
-            return position(x * other.x, y * other.y);
+            std::cout<< "init constructore"<<std::endl;
         }
-        position operator+(const position &other) const
+        ~Position()
         {
-            return add(other);
-        } position operator*(const position &other) const
-        {
-            return multiple(other);
+            std::cout<<"deconstructore called"<<std::endl;
         }
-
-
-
-
-        int geterx()
+        Position(Position const &src)
+        {
+            *this = src;
+        }
+        int get_x() const
         {
             return this->x;
         }
-        int getery()
+        int get_y() const
         {
             return this->y;
+        }
+        void set_x(int x)
+        {
+            this->x = x;
+        }
+        void set_y(int y)
+        {
+            this->y = y;
+        }
+        Position &operator=(Position const &rclass)
+        {
+            if(this != &rclass)
+            {
+                this->x = rclass.x;
+                this->y = rclass.y;
+            }
+            return *this;
+        }
+        Position operator+(Position const &rclass) const
+        {
+            Position res;
+            res.x = this->x + rclass.x;
+            res.y = this->y + rclass.y;
+            return res;
+        }
+        Position operator-(Position const &rclass) const
+        {
+            Position res;
+            res.x = this->x - rclass.x;
+            res.y = this->y - rclass.y;
+            return res;
+        }
+        Position operator*(Position const &rclass) const
+        {
+            return Position(x * rclass.x, y * rclass.y);
+        }
+        Position operator/(Position const &rclass) const
+        {
+            return Position(x / rclass.x, y / rclass.y);
+        }
+        Position operator-() const
+        {
+            return Position(x * (-1), y * (-1));
+        }
+        Position &operator--()
+        {
+            this->x--;
+            this->y--;
+            return *this;
+        }
+       Position &operator++()
+        {
+            this->x++;
+            this->y++;
+            return *this;
         }
 };
 
 
-
-
-
+std::ostream &operator<<(std::ostream &os, const Position &Fixed)
+{
+    os<<Fixed.get_x()<< ", "<<Fixed.get_y()<<std::endl; 
+    return os;
+}
 
 
 int main()
 {
-    position a(2, 5);
-    position b(3, 6);
-    position d(2, 2);
+    Position a(1, 2);
+    Position b(3, 4);
+    Position c(5, 6);
+    Position x(4, 6);
+    Position y(2, 12);
+    Position res;
 
-    //position c = a.add(b.multiple(d));
-    position c = a + b * d;
-    std::cout<< "x "<<c.geterx()<< "y "<<c.getery()<<std::endl;
+    res = -(a + b)*(x/y) - c;
+
+    std::cout<< res;
 }
+
+
+
