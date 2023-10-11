@@ -6,11 +6,14 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 16:27:07 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/07 17:55:21 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/11 09:58:26 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+
+const int Fixed::bits = 8;
 
 Fixed::Fixed():integer(0)
 {
