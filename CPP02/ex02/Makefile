@@ -2,8 +2,7 @@ NAME = fixed_pts
 
 SRCS = main.cpp Fixed.cpp
 
-CC = c++ 
-#-std=c++98
+CC = c++ -std=c++98
 
 CFLAGS = -Wall -Werror -Wextra
 

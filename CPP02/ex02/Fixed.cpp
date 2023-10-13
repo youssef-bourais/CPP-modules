@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:42:54 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/11 19:39:28 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:49:14 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,34 @@ Fixed Fixed::operator++(int)
     return tmp;
 }
 
+Fixed& Fixed::min(Fixed& src1, Fixed& src2)
+{
+    if(src1 > src2)
+        return src2;
+    return src1;
+}
+
+const Fixed& Fixed::min(const Fixed& src1, const Fixed& src2)
+{
+    if(src1 > src2)
+        return(src2);
+    return src1;
+}
+
+Fixed& Fixed::max(Fixed& src1, Fixed& src2)
+{
+    if(src1 > src2)
+        return src1;
+    return src2;
+
+}
+    
+const Fixed& Fixed::max(const Fixed& src1, const Fixed& src2)
+{
+    if(src1 > src2)
+        return src1;
+    return src2;
+}
 
 
 

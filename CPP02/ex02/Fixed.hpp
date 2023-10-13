@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:43:26 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/11 17:51:38 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:48:10 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ class Fixed
         Fixed &operator++();
         Fixed operator--(int);
         Fixed operator++(int);
+        static Fixed& min(Fixed& src1, Fixed& src2);
+        static const Fixed& min(const Fixed& src1, const Fixed& src2);
+        static Fixed& max(Fixed& src1, Fixed& src2);
+        static const Fixed& max(const Fixed& src1, const Fixed& src2);
 
 };
 
