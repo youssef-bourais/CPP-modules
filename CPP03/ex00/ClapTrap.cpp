@@ -6,12 +6,15 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 09:50:36 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/16 09:51:52 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/16 13:16:05 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
+int ClapTrap::_Hit_points = 10;
+int ClapTrap::_Energy_points = 10;
+int ClapTrap::_Attack_damage = 0;
 
 ClapTrap::ClapTrap(std::string name):_name(name)
 {
@@ -43,4 +46,37 @@ ClapTrap &ClapTrap::operator=(ClapTrap const &s)
     return *this;
 }
 
+void ClapTrap::attack(const std::string& target)
+{
+    if(_Energy_points > 0 && _Hit_points > 0)
+    {
+        std::cout <<"ClapTrap "<<this->_name<<" attack "<<target<<", causing "<< this->_Attack_damage<<" points of damage!"<<std::endl;
+        this->_Hit_points--;
+        this->_Energy_points--;
+    }
+    else
+    {
+        std::cout<<_name<< " can't attack, Energy point: "<<_Energy_points<< " Hit points: "<<_Hit_points<<std::endl;
+    }
+}
+
+void ClapTrap::beRepaired(unsigned int amount)
+{
+    if(_Energy_points > 0 && _Hit_points > 0)
+    {
+        std::cout<<"ClapTrap "<< _name<< " repaired, adding "<<amount<<" to hit point"<<std::endl;
+        _Hit_points += amount;
+        _Energy_points--;
+    }
+    else
+    {
+        std::cout<<_name<< " can't be repaired, Energy point: "<<_Energy_points<< " Hit points: "<<_Hit_points<<std::endl;
+    }
+}
+
+void ClapTrap::takeDamage(unsigned int amount)
+{
+        std::cout <<"ClapTrap "<<this->_name<<" get dammaged, losing "<<amount<<" hit point!"<<std::endl;
+        this->_Hit_points -= amount;
+}
 

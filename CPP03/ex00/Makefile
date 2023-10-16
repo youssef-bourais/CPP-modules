@@ -1,4 +1,4 @@
-NAME = fixed_pts
+NAME = ClapTrap
 
 SRCS = main.cpp ClapTrap.cpp
 
