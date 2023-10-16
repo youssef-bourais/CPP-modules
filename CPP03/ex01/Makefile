@@ -9,7 +9,8 @@ CFLAGS = -Wall -Werror -Wextra
 OBJS = ${SRCS:.cpp=.o}
 
 %.o : %.cpp	
-		$(CC) $(CFLAGS) -c $<
+		$(CC) $(CFLAGS) 
+#-c $<
 
 all : $(NAME)
 
@@ -22,3 +23,6 @@ fclean : clean
 	rm -rf $(NAME)
 
 re : fclean all
+
+
+
