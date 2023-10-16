@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 09:40:21 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/16 13:06:52 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/16 16:59:21 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 class ClapTrap
 {
-    private:
+    protected:
         std::string _name;
         static int _Hit_points;
         static int _Energy_points;
