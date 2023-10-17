@@ -6,18 +6,18 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 09:50:36 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/16 17:08:56 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/16 20:42:34 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-int ClapTrap::_Hit_points = 100;
-int ClapTrap::_Energy_points = 50;
-int ClapTrap::_Attack_damage = 20;
-
 ClapTrap::ClapTrap(std::string name):_name(name)
 {
+ 
+    this->_Hit_points = 100;
+    this->_Energy_points = 50;
+    this->_Attack_damage = 20;    
     std::cout<<"Default constructor called"<<std::endl;
 }
 
