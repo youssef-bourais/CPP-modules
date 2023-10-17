@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 15:57:19 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 00:25:33 by ybourais         ###   ########.fr       */
+/*   Created: 2023/10/18 00:07:03 by ybourais          #+#    #+#             */
+/*   Updated: 2023/10/18 00:27:33 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
-#include "Cat.hpp"
 #include "Dog.hpp"
 
 
-int main()
+Dog::Dog()
 {
-    const Animal* meta = new Animal();
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
+    this->type = "Dog";
+    std::cout<< "constructor for dog called"<<std::endl;
+}
 
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
-    i->makeSound(); //will output the cat sound!
-    j->makeSound();
-    meta->makeSound();
-    return 0;
+Dog::~Dog()
+{
+    std::cout<< "deconstructor for dog called"<<std::endl;
+}
+
+void Dog::makeSound()
+{
+    std::cout<< "barke"<<std::endl;
 }

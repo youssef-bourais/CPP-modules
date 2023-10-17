@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 15:57:19 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 00:25:33 by ybourais         ###   ########.fr       */
+/*   Created: 2023/10/18 00:01:36 by ybourais          #+#    #+#             */
+/*   Updated: 2023/10/18 00:27:47 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
 #include "Cat.hpp"
-#include "Dog.hpp"
 
 
-int main()
+Cat::Cat()
 {
-    const Animal* meta = new Animal();
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
+    this->type = "Cat";
+    std::cout<< "constructor for cat called"<<std::endl;
+}
 
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
-    i->makeSound(); //will output the cat sound!
-    j->makeSound();
-    meta->makeSound();
-    return 0;
+
+Cat::~Cat()
+{
+    std::cout<< "deconstructor for cat called"<<std::endl;
+}
+
+void Cat::makeSound()
+{
+    std::cout<< "meow"<<std::endl;
 }
