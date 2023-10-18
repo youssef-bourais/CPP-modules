@@ -1,33 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 00:02:22 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 11:02:11 by ybourais         ###   ########.fr       */
+/*   Created: 2023/10/17 16:26:13 by ybourais          #+#    #+#             */
+/*   Updated: 2023/10/18 06:24:49 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+#include <iostream>
 
-class Cat : public Animal
+
+class Animal
 {
     private:
-       Brain *cat_brain; 
+
+    protected:
+        std::string type;
     public:
-        Cat();
-        ~Cat();
-        void makeSound() const;
-        Cat &operator=(Cat const &s);
-        void set(std::string str);
-        std::string geter();
+         Animal(void);
+        virtual~Animal(void);
+        virtual Animal &operator=(Animal const &s);
+        Animal(Animal const &src);
+        virtual void makeSound() const;
+        std::string getType() const;
+        void setType(std::string type);
 };
+
+
+
+
+
+
+
+
+
 
 
 
