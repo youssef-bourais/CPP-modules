@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:01:36 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 06:54:54 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 08:22:11 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* ************************************************************************** */
@@ -37,6 +37,8 @@ Cat &Cat::operator=(Animal const &s)
 {
     if(this != &s)
         *this = s;
+    this->cat_brain = new Brain;
+    Brain::operator=(s);
     return *this;
 }
 
