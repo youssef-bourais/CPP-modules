@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:26:13 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 06:24:49 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:59:19 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef AANIMAL_HPP
+#define AANIMAL_HPP
 
 #include <iostream>
 
 
-class Animal
+class AAnimal
 {
     private:
 
     protected:
         std::string type;
     public:
-         Animal(void);
-        virtual~Animal(void);
-        virtual Animal &operator=(Animal const &s);
-        Animal(Animal const &src);
-        virtual void makeSound() const;
+         AAnimal(void);
+        virtual~AAnimal(void);
+        virtual AAnimal &operator=(AAnimal const &s);
+        AAnimal(AAnimal const &src);
+        virtual void makeSound() const = 0;
         std::string getType() const;
         void setType(std::string type);
 };

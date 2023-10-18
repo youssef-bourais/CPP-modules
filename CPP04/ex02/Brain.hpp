@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 03:54:46 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 11:07:51 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:35:05 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class Brain
         virtual ~Brain(void);
         virtual Brain &operator=(Brain const &s);
         Brain(Brain const &src);
-        void set_first_index(std::string str);
-        std::string get_first_index();
+        void set(std::string str, int i);
+        std::string get(int i);
 };
 
 

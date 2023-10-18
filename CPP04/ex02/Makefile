@@ -1,6 +1,6 @@
-NAME = Animal
+NAME = AAnimal
 
-SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp  WrongAnimal.cpp WrongCat.cpp Brain.cpp 
+SRCS = main.cpp AAnimal.cpp Cat.cpp Dog.cpp  WrongAnimal.cpp WrongCat.cpp Brain.cpp 
 
 CC = c++ -std=c++98
 
@@ -13,7 +13,7 @@ OBJS = ${SRCS:.cpp=.o}
 
 all : $(NAME)
 
-$(NAME) : $(OBJS) Animal.hpp
+$(NAME) : $(OBJS) AAnimal.hpp
 		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 clean :
 	rm -rf $(OBJS)

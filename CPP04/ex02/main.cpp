@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:19 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 11:05:54 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:00:35 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 int main()
 {
-    Animal* array[4];
+    AAnimal* array[4];
     int i;
 
     for(i = 0; i < 4;i++)
@@ -34,6 +34,5 @@ int main()
         delete array[i]; 
     return 0;
 }
-
 
 

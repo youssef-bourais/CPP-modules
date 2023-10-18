@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:01:36 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 11:08:15 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:37:24 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* ************************************************************************** */
@@ -44,15 +44,15 @@ Cat &Cat::operator=(Cat const &s)
     return *this;
 }
 
-void Cat::set(std::string str)
+void Cat::seter(std::string str, int i)
 {
-    this->cat_brain[0].set_first_index(str);
+    this->cat_brain[i].set(str, i);
 }
 
 
-std::string Cat::geter()
+std::string Cat::geter(int i)
 {
-    return cat_brain[0].get_first_index();
+    return cat_brain[i].get(i);
 }
 
 
