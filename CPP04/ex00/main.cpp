@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:19 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 02:43:31 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 03:11:26 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,43 +21,43 @@
 
 int main()
 {
-   //
-   //  const Animal* meta = new Animal();
-   //  const Animal* cate = new Cat();
-   //  const Animal* doge = new Dog();
-   //
-   //  std::cout << meta->getType() << " " << std::endl;
-   //  std::cout << cate->getType() << " " << std::endl; 
-   //  std::cout << doge->getType() << " " << std::endl;
-   // 
-   //  meta->makeSound(); 
-   //  cate->makeSound();
-   //  doge->makeSound();
-   //  
-    
-    const WrongAnimal* meta = new WrongAnimal();
-    const WrongAnimal* cate = new WrongCat();
-    const WrongAnimal* doge = new WrongDog();
+
+    const Animal* meta = new Animal();
+    const Animal* cate = new Cat();
+    const Animal* doge = new Dog();
 
     std::cout << meta->getType() << " " << std::endl;
     std::cout << cate->getType() << " " << std::endl; 
     std::cout << doge->getType() << " " << std::endl;
-   
+
     meta->makeSound(); 
     cate->makeSound();
     doge->makeSound();
-  
+   
+    delete meta;
+    delete cate;
+    delete doge;
+    
+
+
+    const WrongAnimal* wrongmeta = new WrongAnimal();
+    const WrongAnimal* wrongcate = new WrongCat();
+    const WrongAnimal* wrongdoge = new WrongDog();
+
+    std::cout << wrongmeta->getType() << " " << std::endl;
+    std::cout << wrongcate->getType() << " " << std::endl; 
+    std::cout << wrongdoge->getType() << " " << std::endl;
+
+    wrongmeta->makeSound(); 
+    wrongcate->makeSound();
+    wrongdoge->makeSound();
+
+    delete wrongmeta;
+    delete wrongcate;
+    delete wrongdoge;
+    
     return 0;
 }
-
-
-
-
-
-
-
-
-
 
 
 

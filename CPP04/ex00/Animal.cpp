@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:25:50 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 01:44:27 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 03:11:08 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,14 @@ Animal::~Animal()
 
 Animal::Animal(Animal const &src)
 {
+    std::cout<< "copy constructor for animal called"<<std::endl;
     *this = src;
 }
 
 Animal & Animal::operator=(Animal const &s)
 {
     if(this != &s)
-    {
-
-    }
+        *this = s;
     return *this;
 }
 

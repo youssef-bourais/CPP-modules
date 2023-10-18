@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 02:27:21 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 02:49:08 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 03:11:14 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,14 @@ WrongAnimal::~WrongAnimal()
 
 WrongAnimal::WrongAnimal(WrongAnimal const &src)
 {
+    std::cout<< "copy constructor for wrong-animal called"<<std::endl;
     *this = src;
 }
 
 WrongAnimal & WrongAnimal::operator=(WrongAnimal const &s)
 {
     if(this != &s)
-    {
-
-    }
+        this->type = s.type;
     return *this;
 }
 
