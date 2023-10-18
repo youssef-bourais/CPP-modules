@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 03:54:17 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 11:07:58 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:35:53 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ Brain & Brain::operator=(Brain const &s)
     return *this;
 }
 
-void Brain::set_first_index(std::string str)
+void Brain::set(std::string str, int i)
 {
-    ideas[0] = str;
+    ideas[i] = str;
 }
 
-std::string Brain::get_first_index()
+std::string Brain::get(int i)
 {
-    return ideas[0];
+    return ideas[i];
 }
 
 

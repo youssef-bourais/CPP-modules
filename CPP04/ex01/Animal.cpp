@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:25:50 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 10:10:30 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:33:54 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Animal::Animal(Animal const &src)
     this->type = src.getType();
 }
 
-Animal & Animal::operator=(Animal const &s)
+Animal &Animal::operator=(Animal const &s)
 {
     if(this != &s)
         this->type = s.type; 

@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:19 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 11:15:13 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:37:55 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,3 @@ int main()
 }
 
 
-//
-// int mai()
-// {
-//     const Animal* j = new Dog();
-//     const Animal* i = new Cat();
-//    
-//     delete j;//should not create a leak
-//     delete i;
-//     
-//     return 0;
-// }
-//
-// int main()
-// {
-//     mai();
-//     while(1);
-// }
