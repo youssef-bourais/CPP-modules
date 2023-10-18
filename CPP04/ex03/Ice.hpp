@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 14:14:35 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 15:25:17 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:45:23 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,14 @@ class Ice : public AMateria
 {
     public:
         Ice();
-        Ice(std::string type);
         ~Ice();
-        Ice(const Ice& src);
+        Ice(Ice const &src);
         Ice &operator=(Ice const &s);
-   
+ 
+        virtual AMateria* clone() const = 0;
+        virtual void use(ICharacter& target);
+  
 };
-
-Ice::Ice()
-{
-    std::cout<< "constructor for ice called"<<std::endl;
-}
-
 
 #endif
 

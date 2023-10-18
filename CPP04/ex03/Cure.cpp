@@ -1,44 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 14:14:20 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 18:46:20 by ybourais         ###   ########.fr       */
+/*   Created: 2023/10/18 18:41:24 by ybourais          #+#    #+#             */
+/*   Updated: 2023/10/18 18:45:13 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
 
-Ice::Ice()
+#include "Cure.hpp"
+
+Cure::Cure()
 {
-    this->type = "ice";
-    std::cout<< "default constructor for ice called"<<std::endl;
+    this->type = "cure";
+    std::cout<< "default constructor for Cure called"<<std::endl;
 }
 
-Ice::~Ice()
+Cure::~Cure()
 {
-    std::cout<< "deconstructor for ice called"<<std::endl;
+    std::cout<< "deconstructor for Cure called"<<std::endl;
 }
 
-Ice::Ice(Ice const &src)
+Cure::Cure(Cure const &src)
 {
     std::cout<< "copy constructor for AMateria called"<<std::endl;
     this->type = src.type;
 }
 
 
-Ice &Ice::operator=(Ice const &s)
+Cure &Cure::operator=(Cure const &s)
 {
     if(this != &s)
         this->type = s.type; 
     return *this;
 }
 
-Ice::clone()
-{
 
-}
 
