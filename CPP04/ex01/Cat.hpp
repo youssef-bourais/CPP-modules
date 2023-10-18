@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:02:22 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 11:36:30 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 15:43:17 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ class Cat : public Animal
     public:
         Cat();
         ~Cat();
-        void makeSound() const;
+        Cat(Cat const &src);
         Cat &operator=(Cat const &s);
-        void seter(std::string str, int i);
+        
+        void makeSound() const;
         std::string geter(int i);
+        void seter(std::string str, int i);
 };
-
 
 
 #endif

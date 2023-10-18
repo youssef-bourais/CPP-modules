@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:01:36 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 11:37:24 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:55:55 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* ************************************************************************** */
@@ -34,6 +34,13 @@ void Cat::makeSound() const
     std::cout<< "meow"<<std::endl;
 }
 
+Cat::Cat(const Cat& src)
+{
+	std::cout << "Cat copy constructor called" << std::endl;
+	if (this != &src)
+        *this = src;
+}
+
 Cat &Cat::operator=(Cat const &s)
 {
     if(this != &s)
@@ -46,13 +53,18 @@ Cat &Cat::operator=(Cat const &s)
 
 void Cat::seter(std::string str, int i)
 {
-    this->cat_brain[i].set(str, i);
+    if(i >= 0 && i < 100)
+        this->cat_brain->set(str, i);
 }
 
 
 std::string Cat::geter(int i)
 {
-    return cat_brain[i].get(i);
+    if(i >= 0 && i < 100)
+    {
+        return this->cat_brain->get(i);
+    }
+    return "index out of range";
 }
 
 

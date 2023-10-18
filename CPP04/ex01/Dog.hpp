@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:05:28 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 10:31:47 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 15:43:36 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ class Dog : public Animal
     public:
         Dog();
         ~Dog();
-        void makeSound() const; 
+        Dog(Dog const &src);
         Dog &operator=(Dog const &s);
+        
+        void makeSound() const; 
 };
 
 #endif

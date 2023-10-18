@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 03:54:17 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 11:35:53 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:55:08 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 Brain::Brain()
 {
+    int i = 0;
+    while(i < 100)
+    {
+       ideas[i++] = "null"; 
+    }
     std::cout<< "contructor for Brain called"<<std::endl;
 }
 
@@ -25,7 +30,6 @@ Brain::~Brain()
 Brain::Brain(Brain const &src)
 {
     std::cout<< "copy constructor for Brain called"<<std::endl;
-    
     int i = 0;
     while(i < 100)
     {
@@ -50,12 +54,15 @@ Brain & Brain::operator=(Brain const &s)
 
 void Brain::set(std::string str, int i)
 {
-    ideas[i] = str;
+    if(i >= 0 && i < 100)
+        ideas[i] = str;
 }
 
 std::string Brain::get(int i)
 {
-    return ideas[i];
+    if(i >= 0 && i < 100)
+        return ideas[i];
+    return "NULL";
 }
 
 

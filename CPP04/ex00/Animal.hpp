@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:26:13 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 03:00:14 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 15:59:45 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Animal
         virtual~Animal(void);
         Animal &operator=(Animal const &s);
         Animal(Animal const &src);
+
         virtual void makeSound() const;
         std::string getType() const;
 };

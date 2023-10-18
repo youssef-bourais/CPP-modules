@@ -1,49 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   ICharacter.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 02:25:02 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 16:00:45 by ybourais         ###   ########.fr       */
+/*   Created: 2023/10/18 12:36:55 by ybourais          #+#    #+#             */
+/*   Updated: 2023/10/18 12:36:56 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
-#ifndef WRONGANIMAL_HPP
-#define WRONGANIMAL_HPP
-
-#include <iostream>
-
-
-class WrongAnimal
-{
-    private:
-
-    protected:
-        std::string type;
-    public:
-        WrongAnimal(void);
-        ~WrongAnimal(void);
-        WrongAnimal &operator=(WrongAnimal const &s);
-        WrongAnimal(WrongAnimal const &src);
-
-        void makeSound() const;
-        std::string getType() const;
-};
-
-
-
-
-
-
-
-
-
-
-
-
-#endif
 
 

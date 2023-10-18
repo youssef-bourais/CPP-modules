@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 02:31:07 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 11:08:57 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:16:41 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ class WrongCat : public WrongAnimal
     public:
         WrongCat();
         ~WrongCat();
+        WrongCat(WrongCat const &src);
+        WrongCat &operator=(WrongCat const &s);
+        
         void makeSound() const;
 };
 

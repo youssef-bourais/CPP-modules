@@ -1,47 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 02:25:02 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 16:00:45 by ybourais         ###   ########.fr       */
+/*   Created: 2023/10/18 14:14:35 by ybourais          #+#    #+#             */
+/*   Updated: 2023/10/18 15:25:17 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef ICE_HPP
+#define ICE_HPP
 
-#ifndef WRONGANIMAL_HPP
-#define WRONGANIMAL_HPP
+#include "AMateria.hpp"
 
-#include <iostream>
-
-
-class WrongAnimal
+class Ice : public AMateria
 {
-    private:
-
-    protected:
-        std::string type;
     public:
-        WrongAnimal(void);
-        ~WrongAnimal(void);
-        WrongAnimal &operator=(WrongAnimal const &s);
-        WrongAnimal(WrongAnimal const &src);
-
-        void makeSound() const;
-        std::string getType() const;
+        Ice();
+        Ice(std::string type);
+        ~Ice();
+        Ice(const Ice& src);
+        Ice &operator=(Ice const &s);
+   
 };
 
-
-
-
-
-
-
-
-
-
+Ice::Ice()
+{
+    std::cout<< "constructor for ice called"<<std::endl;
+}
 
 
 #endif
