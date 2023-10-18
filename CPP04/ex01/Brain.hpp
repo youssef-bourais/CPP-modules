@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 17:23:01 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 07:53:10 by ybourais         ###   ########.fr       */
+/*   Created: 2023/10/18 03:54:46 by ybourais          #+#    #+#             */
+/*   Updated: 2023/10/18 06:26:08 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-#define FRAGTRAP_HPP
 
-#include "ScavTrap.hpp"
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
 
-class FragTrap : public ScavTrap
+#include <iostream>
+
+class Brain
 {
+    private:
+        std::string ideas[100];
     public:
-        FragTrap(std::string name);
-        FragTrap();
-        ~FragTrap();
-        void highFivesGuys(void);
+        Brain(void);
+        virtual ~Brain(void);
+        virtual Brain &operator=(Brain const &s);
+        Brain(Brain const &src);
+
 };
 
-#endif 
+
+#endif
+

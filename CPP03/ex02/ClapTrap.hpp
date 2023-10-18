@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 09:40:21 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/16 20:40:55 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 07:51:50 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class ClapTrap
 
     public:
         ClapTrap(std::string name);
+        ClapTrap();
         ~ClapTrap();
         ClapTrap(ClapTrap const &src);
         ClapTrap &operator=(ClapTrap const &f);

@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 17:23:01 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 07:53:10 by ybourais         ###   ########.fr       */
+/*   Created: 2023/10/18 00:05:28 by ybourais          #+#    #+#             */
+/*   Updated: 2023/10/18 06:55:37 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-#define FRAGTRAP_HPP
+#ifndef DOG_HPP
+#define DOG_HPP
 
-#include "ScavTrap.hpp"
+#include "Animal.hpp"
+#include "Brain.hpp"
 
-class FragTrap : public ScavTrap
+class Dog : public Animal
 {
+    private:
+        Brain *dog_brain;
     public:
-        FragTrap(std::string name);
-        FragTrap();
-        ~FragTrap();
-        void highFivesGuys(void);
+        Dog();
+        ~Dog();
+        void makeSound() const; 
+        Dog &operator=(Animal const &s);
+        Dog &operator=(Dog const &s);
 };
 
-#endif 
+#endif
+
+

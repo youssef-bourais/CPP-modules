@@ -6,11 +6,16 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 09:50:36 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/16 20:39:33 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 07:48:14 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap()
+{
+}
+
 ClapTrap::ClapTrap(std::string name):_name(name)
 {
     

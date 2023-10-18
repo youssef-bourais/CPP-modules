@@ -6,12 +6,14 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:14:04 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/16 17:10:58 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 07:51:21 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
-
+ScavTrap::ScavTrap()
+{
+}
 ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 {
     std::cout<< "constructor called for derived class"<<std::endl;

@@ -1,27 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 17:23:01 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 07:53:10 by ybourais         ###   ########.fr       */
+/*   Created: 2023/10/17 16:26:13 by ybourais          #+#    #+#             */
+/*   Updated: 2023/10/18 06:24:49 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-#define FRAGTRAP_HPP
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 
-#include "ScavTrap.hpp"
+#include <iostream>
 
-class FragTrap : public ScavTrap
+
+class Animal
 {
+    private:
+
+    protected:
+        std::string type;
     public:
-        FragTrap(std::string name);
-        FragTrap();
-        ~FragTrap();
-        void highFivesGuys(void);
+         Animal(void);
+        virtual~Animal(void);
+        virtual Animal &operator=(Animal const &s);
+        Animal(Animal const &src);
+        virtual void makeSound() const;
+        std::string getType() const;
+        void setType(std::string type);
 };
 
-#endif 
+
+
+
+
+
+
+
+
+
+
+
+#endif
+
+

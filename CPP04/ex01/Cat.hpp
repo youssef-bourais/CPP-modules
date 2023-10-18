@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 17:23:01 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 07:53:10 by ybourais         ###   ########.fr       */
+/*   Created: 2023/10/18 00:02:22 by ybourais          #+#    #+#             */
+/*   Updated: 2023/10/18 06:54:34 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-#define FRAGTRAP_HPP
+#ifndef CAT_HPP
+#define CAT_HPP
 
-#include "ScavTrap.hpp"
+#include "Animal.hpp"
+#include "Brain.hpp"
 
-class FragTrap : public ScavTrap
+class Cat : public Animal
 {
+    private:
+       Brain *cat_brain; 
     public:
-        FragTrap(std::string name);
-        FragTrap();
-        ~FragTrap();
-        void highFivesGuys(void);
+        Cat();
+        ~Cat();
+        void makeSound() const;
+        Cat &operator=(Animal const &s);
+        Cat &operator=(Cat const &s);
 };
 
-#endif 
+
+
+#endif
+
+

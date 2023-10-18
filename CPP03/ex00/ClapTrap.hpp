@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 09:40:21 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/16 20:26:59 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 07:49:34 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class ClapTrap
         int _Attack_damage;
 
     public:
+        ClapTrap();
         ClapTrap(std::string name);
         ~ClapTrap();
         ClapTrap(ClapTrap const &src);
