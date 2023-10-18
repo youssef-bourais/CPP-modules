@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:07:03 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 00:27:33 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 01:52:30 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Dog::~Dog()
     std::cout<< "deconstructor for dog called"<<std::endl;
 }
 
-void Dog::makeSound()
+void Dog::makeSound() const
 {
     std::cout<< "barke"<<std::endl;
 }

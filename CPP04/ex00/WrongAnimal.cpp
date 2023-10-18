@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 16:25:50 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 01:44:27 by ybourais         ###   ########.fr       */
+/*   Created: 2023/10/18 02:27:21 by ybourais          #+#    #+#             */
+/*   Updated: 2023/10/18 02:29:36 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+
+#include "WrongAnimal.hpp"
 
 
-Animal::Animal()
+WrongAnimal::WrongAnimal()
 {
-    this->type = "Animal";
+    this->type = "WrongAnimal";
     std::cout<< "contructor for animal called"<<std::endl;
 }
 
-Animal::~Animal()
+WrongAnimal::~WrongAnimal()
 {
     std::cout<< "deconstructor for animal called"<<std::endl;
 }
 
-Animal::Animal(Animal const &src)
+WrongAnimal::WrongAnimal(WrongAnimal const &src)
 {
     *this = src;
 }
 
-Animal & Animal::operator=(Animal const &s)
+WrongAnimal & WrongAnimal::operator=(WrongAnimal const &s)
 {
     if(this != &s)
     {
@@ -38,12 +39,12 @@ Animal & Animal::operator=(Animal const &s)
     return *this;
 }
 
-void Animal::makeSound() const
+void WrongAnimal::makeSound() const
 {
     std::cout<< "some voice"<<std::endl;
 }
 
-std::string Animal::getType() const
+std::string WrongAnimal::getType() const
 {
     return this->type;
 }

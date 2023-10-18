@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:01:36 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 00:27:47 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/18 01:52:00 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Cat::~Cat()
     std::cout<< "deconstructor for cat called"<<std::endl;
 }
 
-void Cat::makeSound()
+void Cat::makeSound() const
 {
     std::cout<< "meow"<<std::endl;
 }

@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongDog.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 00:02:22 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 02:23:29 by ybourais         ###   ########.fr       */
+/*   Created: 2023/10/18 02:38:09 by ybourais          #+#    #+#             */
+/*   Updated: 2023/10/18 02:41:33 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
 
-#include "Animal.hpp"
+#include "WrongDog.hpp"
 
 
-class Cat : public Animal
+WrongDog::WrongDog()
 {
-    public:
-        Cat();
-        ~Cat();
-        void makeSound() const;
-};
+    this->type = "Dog";
+    std::cout<< "constructor for dog called"<<std::endl;
+}
 
+WrongDog::~WrongDog()
+{
+    std::cout<< "deconstructor for dog called"<<std::endl;
+}
 
-
-#endif
-
-
+void WrongDog::makeSound() const
+{
+    std::cout<< "barke"<<std::endl;
+}
