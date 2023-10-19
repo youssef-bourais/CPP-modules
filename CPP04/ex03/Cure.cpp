@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:41:24 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/19 10:41:52 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:19:46 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,12 @@ Cure::Cure(Cure const &src)
     this->type = src.type;
 }
 
-
 Cure &Cure::operator=(Cure const &s)
 {
     if(this != &s)
         this->type = s.type; 
     return *this;
 }
-
-
 
 AMateria* Cure::clone() const
 {

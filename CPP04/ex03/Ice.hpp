@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 14:14:35 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/19 10:12:30 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:56:09 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 class Ice : public AMateria
 {
+    private:
+        std::string type;
     public:
         Ice();
         ~Ice();

@@ -1,6 +1,6 @@
-NAME = AAnimal
+NAME = a.out
 
-SRCS = main.cpp 
+SRCS = main.cpp Amateria.cpp Chatacter.cpp Cure.cpp Ace.cpp MateriaSource.cpp 
 
 CC = c++ -std=c++98
 
