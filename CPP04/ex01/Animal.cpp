@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:25:50 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 15:44:01 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:11:36 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 Animal::Animal()
 {
     this->type = "Animal";
-    std::cout<< "contructor for animal called"<<std::endl;
+    std::cout<< "constructor for animal called"<<std::endl;
 }
 
 Animal::~Animal()

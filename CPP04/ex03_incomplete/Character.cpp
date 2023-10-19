@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 15:21:03 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/19 15:50:37 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:03:53 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,18 @@ Character &Character::operator=(Character const &s)
 
 void Character::equip(AMateria* m)
 {
-
+    (void)m;
 }
 
 void Character::unequip(int idx)
 {
-
+    (void)idx;
 }
         
 void Character::use(int idx, ICharacter& target)
 {
-
+    (void)idx;
+    (void)target;
 }
 
 

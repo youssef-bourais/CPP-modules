@@ -1,50 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 14:14:20 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/19 10:20:34 by ybourais         ###   ########.fr       */
+/*   Created: 2023/10/18 12:26:54 by ybourais          #+#    #+#             */
+/*   Updated: 2023/10/19 17:11:28 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
+#include "AMateria.hpp"
 
-Ice::Ice()
+
+AMateria::AMateria()
 {
-    this->type = "ice";
-    std::cout<< "default constructor for ice called"<<std::endl;
+    std::cout<<"constructor for AMateria called"<<std::endl;
 }
 
-Ice::~Ice()
+AMateria::~AMateria()
 {
-    std::cout<< "deconstructor for ice called"<<std::endl;
+    std::cout<< "deconstructor for AMateria called"<<std::endl;
 }
 
-Ice::Ice(Ice const &src)
+AMateria::AMateria(std::string const &type)
+{
+    this->type = type;
+    std::cout<< "condtructor for setting type of AMateria called"<<std::endl;
+}
+
+std::string const &AMateria::getType() const
+{
+   return this->type; 
+}
+
+AMateria::AMateria(AMateria const &src)
 {
     std::cout<< "copy constructor for AMateria called"<<std::endl;
     this->type = src.type;
 }
 
 
-Ice &Ice::operator=(Ice const &s)
+AMateria &AMateria::operator=(AMateria const &s)
 {
     if(this != &s)
         this->type = s.type; 
     return *this;
 }
 
-
-AMateria* Ice::clone() const
-{
-    return new Ice(*this);
-}
-
-void Ice::use(ICharacter& target)
+void AMateria::use(ICharacter &target)
 {
 
+    (void)target;
 }
+
+
 

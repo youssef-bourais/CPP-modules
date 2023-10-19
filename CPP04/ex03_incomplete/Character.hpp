@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 15:21:11 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/19 16:55:41 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:13:39 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ class Character : public ICharacter
 {
     private:
         AMateria* inventory[4];
-        //somthing
         std::string name;
     public:
         Character();
