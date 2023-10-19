@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:26:13 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 15:59:45 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:14:50 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 
 class Animal
 {
-    private:
-
     protected:
         std::string type;
     public:
@@ -31,9 +29,6 @@ class Animal
         virtual void makeSound() const;
         std::string getType() const;
 };
-
-
-
 
 
 

@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:26:49 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 18:47:36 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/19 10:40:33 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define AMATERIA_HPP
 
 #include <iostream>
+#include "ICharacter.hpp"
 
 class ICharacter;
 
@@ -25,10 +26,10 @@ class AMateria
         AMateria();
         virtual ~AMateria();
         AMateria(std::string const &type);
-        std::string const &getType() const; 
         AMateria &operator=(AMateria const &s);
-
         AMateria(AMateria const &s);
+        
+        std::string const &getType() const; 
         virtual AMateria* clone() const = 0;
         virtual void use(ICharacter& target);
 };

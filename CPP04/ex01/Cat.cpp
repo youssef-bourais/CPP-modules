@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:01:36 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 17:49:57 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:02:13 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* ************************************************************************** */
@@ -40,8 +40,9 @@ Cat &Cat::operator=(Cat const &s)
     if(this != &s)
     {  
         type = s.type;
+        delete cat_brain;
         cat_brain = new Brain;
-        *cat_brain = *s.cat_brain;    
+        *cat_brain = *s.cat_brain; 
     }
     return *this;
 }
@@ -51,7 +52,7 @@ Cat::Cat(Cat const &src)
     std::cout<< "copy constructor Cat called"<<std::endl;
     type = src.type;
     cat_brain = new Brain; 
-    *cat_brain = *src.cat_brain;    
+    *cat_brain = *src.cat_brain; 
 }
 
 

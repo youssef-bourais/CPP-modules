@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:07:03 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 16:03:14 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:22:14 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,6 @@ Dog::~Dog()
 {
     std::cout<< "deconstructor for dog called"<<std::endl;
 }
-
-void Dog::makeSound() const
-{
-    std::cout<< "barke"<<std::endl;
-}
-
 Dog::Dog(Dog const &src)
 {
     std::cout<< "copy constructor Cat called"<<std::endl;
@@ -42,6 +36,12 @@ Dog &Dog::operator=(Dog const &s)
         type = s.type;
     }
     return *this;
+}
+
+
+void Dog::makeSound() const
+{
+    std::cout<< "barke"<<std::endl;
 }
 
 

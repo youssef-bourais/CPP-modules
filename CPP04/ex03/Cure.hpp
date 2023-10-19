@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:39:54 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 18:45:19 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/19 10:12:41 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class Cure : public AMateria
         Cure(Cure const &src);
         Cure &operator=(Cure const &s);
  
-        virtual AMateria* clone() const = 0;
-        virtual void use(ICharacter& target);
+        AMateria* clone() const;
+        void use(ICharacter& target);
   
 };
 

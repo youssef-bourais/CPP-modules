@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 03:54:17 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 16:55:08 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:01:18 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Brain::Brain()
     {
        ideas[i++] = "null"; 
     }
-    std::cout<< "contructor for Brain called"<<std::endl;
+    std::cout<< "constructor for Brain called"<<std::endl;
 }
 
 Brain::~Brain()

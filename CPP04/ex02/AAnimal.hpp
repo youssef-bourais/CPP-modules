@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:26:13 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 18:03:39 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:10:51 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,12 @@
 
 class AAnimal
 {
-    private:
-
     protected:
         std::string type;
     public:
-         AAnimal(void);
+        AAnimal(void);
         virtual~AAnimal(void);
-        virtual AAnimal &operator=(AAnimal const &s);
+        AAnimal &operator=(AAnimal const &s);
         AAnimal(AAnimal const &src);
       
         virtual void makeSound() const = 0;

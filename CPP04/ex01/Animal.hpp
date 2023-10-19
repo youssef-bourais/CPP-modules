@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:26:13 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 16:08:14 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:32:01 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Animal
     public:
         Animal(void);
         virtual~Animal(void);
-        virtual Animal &operator=(Animal const &s);
+        Animal &operator=(Animal const &s);
         Animal(Animal const &src);
        
         virtual void makeSound() const;

@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:01:36 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 17:55:55 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:13:13 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* ************************************************************************** */
@@ -34,22 +34,26 @@ void Cat::makeSound() const
     std::cout<< "meow"<<std::endl;
 }
 
-Cat::Cat(const Cat& src)
-{
-	std::cout << "Cat copy constructor called" << std::endl;
-	if (this != &src)
-        *this = src;
-}
-
 Cat &Cat::operator=(Cat const &s)
 {
     if(this != &s)
-    {        
+    {  
+        type = s.type;
+        delete cat_brain;
         cat_brain = new Brain;
-        *cat_brain = *s.cat_brain;    
+        *cat_brain = *s.cat_brain; 
     }
     return *this;
 }
+
+Cat::Cat(Cat const &src)
+{
+    std::cout<< "copy constructor Cat called"<<std::endl;
+    type = src.type;
+    cat_brain = new Brain; 
+    *cat_brain = *src.cat_brain; 
+}
+
 
 void Cat::seter(std::string str, int i)
 {

@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:41:24 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 18:45:13 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/19 10:41:52 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,14 @@ Cure &Cure::operator=(Cure const &s)
 }
 
 
+
+AMateria* Cure::clone() const
+{
+    return new Cure(*this);
+}
+
+void Cure::use(ICharacter& target)
+{
+    std::cout<< "* shoots an ice bolt at "<< target.getName()<<" *"<<std::endl;
+}
 

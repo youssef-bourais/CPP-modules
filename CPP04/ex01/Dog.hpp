@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:05:28 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 15:43:36 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:01:59 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ class Dog : public Animal
         Dog &operator=(Dog const &s);
         
         void makeSound() const; 
+        std::string geter(int i);
+        void seter(std::string str, int i);
+
 };
 
 #endif

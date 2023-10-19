@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 14:14:20 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/18 18:46:20 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/10/19 10:20:34 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,13 @@ Ice &Ice::operator=(Ice const &s)
     return *this;
 }
 
-Ice::clone()
+
+AMateria* Ice::clone() const
+{
+    return new Ice(*this);
+}
+
+void Ice::use(ICharacter& target)
 {
 
 }
