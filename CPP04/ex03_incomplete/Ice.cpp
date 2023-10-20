@@ -48,3 +48,10 @@ void Ice::use(ICharacter& target)
     (void)target;
 }
 
+
+
+
+
+
+
+
