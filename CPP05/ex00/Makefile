@@ -1,4 +1,4 @@
-NAME = Animal
+NAME = Bureaucrat
 
 SRCS = main.cpp Bureaucrat.cpp
 
@@ -13,7 +13,7 @@ OBJS = ${SRCS:.cpp=.o}
 
 all : $(NAME)
 
-$(NAME) : $(OBJS) Animal.hpp
+$(NAME) : $(OBJS) Bureaucrat.hpp
 		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 clean :
 	rm -rf $(OBJS)

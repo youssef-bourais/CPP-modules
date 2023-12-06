@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:34:14 by ybourais          #+#    #+#             */
-/*   Updated: 2023/11/01 19:57:24 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/06 11:37:21 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,13 @@ void Bureaucrat::set_grade(int grade)
 {
     if(grade > 0 && grade <= 150)
         this->_grade = grade;
-    else
-        std::cout<< "invalid grade"<<std::endl;
-    /* throw  */
+    else if (grade > 150)
+    {
+        throw 1;
+    }
+    else {
+        throw 2;
+    }
 }
 
 
