@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:34:14 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/08 13:58:04 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/08 15:10:34 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,10 @@ void Bureaucrat::decrement_grade()
         throw GradeOutofRange();
 }
 
-std::ostream& operator<<(std::ostream &os, const Bureaucrat &src)
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &src)
 {
 	os << src.getName() << ", bureaucrat grade " << src.getGrade();
 	return (os);
 }
+
+
