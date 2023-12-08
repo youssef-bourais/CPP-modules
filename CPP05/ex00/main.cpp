@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:38:27 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/08 13:23:28 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/08 13:46:21 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,13 @@ int main()
 
     try 
     {
-        a.set_grade(-4);
+        //a.set_grade(-4);
+        a.set_grade(149);
+        a.increment_grade();
+        a.decrement_grade();
+        a.decrement_grade();
+        a.decrement_grade();
+        std::cout<< a.get_Grade()<<std::endl;
     } 
     catch (const Bureaucrat::GradeTooHighException &e) 
     {
@@ -32,6 +38,10 @@ int main()
     catch (const Bureaucrat::GradeTooLowException &e) 
     {
         std::cerr<< "GradeTooLowException"<<std::endl; 
+    }
+    catch (const Bureaucrat::GradeOutofRange &e)
+    {
+        std::cerr<< "GradeOutofRange"<<std::endl; 
     }
 }
 
