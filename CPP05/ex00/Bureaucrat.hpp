@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:38:21 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/08 13:22:59 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/08 13:57:48 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ class Bureaucrat
         Bureaucrat(Bureaucrat const &src);
         Bureaucrat &operator=(Bureaucrat const &src);
 
-        std::string get_Name() const;
-        int get_Grade() const;
+        std::string getName() const;
+        int getGrade() const;
         void set_name(std::string const name);
         void set_grade(int grade);
         void increment_grade();
@@ -53,6 +53,8 @@ class Bureaucrat::GradeOutofRange : public std::exception
 {
     // Custom exception for a grade that is too low
 };
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& src);
 
 #endif
 

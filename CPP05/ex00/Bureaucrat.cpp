@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:34:14 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/08 13:23:22 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/08 13:58:04 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,22 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const &src)
     return *this;
 }
 
-std::string Bureaucrat::get_Name() const
+std::string Bureaucrat::getName() const
 {
     return this->_name;
 }
 
-
-int Bureaucrat::get_Grade() const {
+int Bureaucrat::getGrade() const {
     return this->_grade;
 }
 
-
-void Bureaucrat::set_name(std::string const name)
-{
-    *const_cast<std::string*>(&this->_name) = name;
-}
-
+/**/
+/* void Bureaucrat::set_name(std::string const name) */
+/* { */
+/*     *const_cast<std::string*>(&this->_name) = name; */
+/* } */
+/**/
+/**/
 
 void Bureaucrat::set_grade(int grade)
 {
@@ -76,7 +76,7 @@ void Bureaucrat::set_grade(int grade)
 
 void Bureaucrat::increment_grade()
 {
-    if(get_Grade() > 1)
+    if(getGrade() > 1)
     {
         this->_grade--;
     }
@@ -84,10 +84,9 @@ void Bureaucrat::increment_grade()
         throw GradeOutofRange();
 }
 
-
 void Bureaucrat::decrement_grade()
 {
-    if(get_Grade() < 150)
+    if(getGrade() < 150)
     {
         this->_grade++;
     }
@@ -95,4 +94,8 @@ void Bureaucrat::decrement_grade()
         throw GradeOutofRange();
 }
 
-
+std::ostream& operator<<(std::ostream &os, const Bureaucrat &src)
+{
+	os << src.getName() << ", bureaucrat grade " << src.getGrade();
+	return (os);
+}
