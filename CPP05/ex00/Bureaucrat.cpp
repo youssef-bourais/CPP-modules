@@ -6,13 +6,18 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:34:14 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/08 10:46:16 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/08 13:23:22 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(): _name(""), _grade(0) { std::cout<< "default constructor called"<<std::endl; } Bureaucrat::Bureaucrat(const std::string name):_name(name), _grade(0)
+Bureaucrat::Bureaucrat(): _name(""), _grade(0) 
+{ 
+    std::cout<< "default constructor called"<<std::endl; 
+} 
+
+Bureaucrat::Bureaucrat(const std::string name):_name(name), _grade(0)
 {
     std::cout<<"initialized constructor called"<<std::endl;
 }
@@ -39,35 +44,55 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const &src)
     return *this;
 }
 
-std::string Bureaucrat::get_name() const
+std::string Bureaucrat::get_Name() const
 {
     return this->_name;
 }
 
-int Bureaucrat::get_grade() const
-{
+
+int Bureaucrat::get_Grade() const {
     return this->_grade;
 }
 
-/**/
-/* void Bureaucrat::set_name(std::string const name) */
-/* { */
-/*     *const_cast<std::string*>(&this->_name) = name; */
-/* } */
-/**/
+
+void Bureaucrat::set_name(std::string const name)
+{
+    *const_cast<std::string*>(&this->_name) = name;
+}
+
 
 void Bureaucrat::set_grade(int grade)
 {
-    if(grade > 0 && grade <= 150)
-        this->_grade = grade;
-    else if (grade > 150)
+    if (grade > 150)
     {
-        throw 1;
+        throw GradeTooHighException(); 
     }
-    else {
-        throw 2;
+    else if(grade < 1) 
+    {
+        throw GradeTooLowException();
     }
+    this->_grade = grade;
 }
 
+void Bureaucrat::increment_grade()
+{
+    if(get_Grade() > 1)
+    {
+        this->_grade--;
+    }
+    else 
+        throw GradeOutofRange();
+}
+
+
+void Bureaucrat::decrement_grade()
+{
+    if(get_Grade() < 150)
+    {
+        this->_grade++;
+    }
+    else 
+        throw GradeOutofRange();
+}
 
 
