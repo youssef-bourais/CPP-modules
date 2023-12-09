@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:34:14 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/08 15:15:23 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/09 18:57:37 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ void Bureaucrat::set_grade(int grade)
 {
     if (grade > 150)
     {
-        throw GradeTooHighException(); 
+        throw GradeTooLowException(); 
     }
     else if(grade < 1) 
     {
-        throw GradeTooLowException();
+        throw GradeTooHighException();
     }
     this->_grade = grade;
 }
@@ -79,7 +79,7 @@ void Bureaucrat::increment_grade()
     if(getGrade() > 1)
         this->_grade--;
     else 
-        throw GradeOutofRange();
+        throw GradeTooHighException();
 }
 
 void Bureaucrat::decrement_grade()
@@ -87,12 +87,12 @@ void Bureaucrat::decrement_grade()
     if(getGrade() < 150)
         this->_grade++;
     else 
-        throw GradeOutofRange();
+        throw GradeTooLowException();
 }
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &src)
 {
-	os << src.getName() << ", bureaucrat grade " << src.getGrade();
+	os << src.getName() << ", bureaucrat grade " << src.getGrade()<<std::endl;
 	return (os);
 }
 

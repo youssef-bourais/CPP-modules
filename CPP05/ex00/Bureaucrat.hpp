@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:38:21 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/09 15:02:47 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/09 18:57:55 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
-
 
 class Bureaucrat
 {
@@ -28,15 +27,13 @@ class Bureaucrat
         Bureaucrat(Bureaucrat const &src);
         Bureaucrat &operator=(Bureaucrat const &src);
 
-        std::string getName() const;
-        int getGrade() const;
+        std::string getName() const; int getGrade() const;
         void set_name(std::string const name);
         void set_grade(int grade);
         void increment_grade();
         void decrement_grade();
         class GradeTooHighException; 
         class GradeTooLowException;
-        class GradeOutofRange;
 };
 
 class Bureaucrat::GradeTooHighException : public std::exception
@@ -44,7 +41,7 @@ class Bureaucrat::GradeTooHighException : public std::exception
     public:
         const char *what () const throw()
         {
-            return "grade to high\n";
+            return "grade to high";
         }
 };
 
@@ -53,16 +50,7 @@ class Bureaucrat::GradeTooLowException : public std::exception
     public:
         const char *what () const throw()
         {
-            return "grade to low\n";
-        }
-};
-
-class Bureaucrat::GradeOutofRange : public std::exception
-{
-    public:
-        const char *what () const throw()
-        {
-            return "grade out of range\n";
+            return "grade to low";
         }
 };
 
