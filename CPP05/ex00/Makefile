@@ -13,6 +13,8 @@ OBJS = ${SRCS:.cpp=.o}
 
 all : $(NAME)
 
+
+
 $(NAME) : $(OBJS) Bureaucrat.hpp
 		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 clean :
