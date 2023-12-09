@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:34:14 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/08 15:10:34 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/08 15:15:23 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,7 @@ void Bureaucrat::set_grade(int grade)
 void Bureaucrat::increment_grade()
 {
     if(getGrade() > 1)
-    {
         this->_grade--;
-    }
     else 
         throw GradeOutofRange();
 }
@@ -87,9 +85,7 @@ void Bureaucrat::increment_grade()
 void Bureaucrat::decrement_grade()
 {
     if(getGrade() < 150)
-    {
         this->_grade++;
-    }
     else 
         throw GradeOutofRange();
 }

@@ -6,20 +6,16 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:38:27 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/08 15:11:25 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/09 15:03:23 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Bureaucrat.hpp"
 
-int main()
-{
-    Bureaucrat a("yassine");
-    
-    /* Bureaucrat b; */
-    /* b = a; */
-    /* std::cout<< b.get_Name()<<std::endl;; */
+int main() 
+{ 
+    Bureaucrat a("yassine"); 
 
     try 
     {

@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:38:21 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/08 15:10:08 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/09 15:02:47 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,29 @@ class Bureaucrat
 
 class Bureaucrat::GradeTooHighException : public std::exception
 {
-    // Custom exception for a grade that is too high
+    public:
+        const char *what () const throw()
+        {
+            return "grade to high\n";
+        }
 };
 
 class Bureaucrat::GradeTooLowException : public std::exception
 {
-    // Custom exception for a grade that is too low
+    public:
+        const char *what () const throw()
+        {
+            return "grade to low\n";
+        }
 };
 
 class Bureaucrat::GradeOutofRange : public std::exception
 {
-    // Custom exception for a grade that is too low
+    public:
+        const char *what () const throw()
+        {
+            return "grade out of range\n";
+        }
 };
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &src);
