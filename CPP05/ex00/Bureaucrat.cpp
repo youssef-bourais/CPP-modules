@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:34:14 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/11 12:53:22 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/11 13:21:37 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ Bureaucrat::Bureaucrat(): _name(""), _grade(0)
 
 Bureaucrat::Bureaucrat(const std::string name, int grade):_name(name), _grade(grade)
 {
+    if (grade > 150)
+        throw GradeTooLowException(); 
+    else if(grade < 1) 
+        throw GradeTooHighException();
     std::cout<<"initialized constructor called"<<std::endl;
 }
 
