@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:38:27 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/11 12:53:54 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/09 19:14:40 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int main() 
 { 
-    Bureaucrat a("yassine", 0); 
-    Bureaucrat b("youssef", 4); 
+    Bureaucrat a("yassine"); 
+    Bureaucrat b("youssef"); 
     
     try 
     {
