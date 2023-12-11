@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:34:14 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/11 19:29:00 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/11 19:40:44 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const &src)
     std::cout<< "copy assignment opetator called"<<std::endl;
     if(this != &src)
     {
-        /* *const_cast<std::string*>(&_name) = src._name; */
         _grade = src._grade;
     }
     return *this;
@@ -61,14 +60,6 @@ int Bureaucrat::getGrade() const
 {
     return this->_grade;
 }
-
-/**/
-/* void Bureaucrat::set_name(std::string const name) */
-/* { */
-/*     *const_cast<std::string*>(&this->_name) = name; */
-/* } */
-/**/
-/**/
 
 void Bureaucrat::set_grade(int grade)
 {
@@ -115,20 +106,8 @@ void Bureaucrat::signForm(Form &src) const
     } 
     catch (std::exception &e) 
     {
-    
-    } 
-
+        std::cout<< this->getName() << " couldn’t sign " << src.get_name() << " because " <<e.what()<<std::endl;
+    }
 }
 
-/* void Bureaucrat::signForm(const Form& form) const */
-/* { */
-/*     try */
-/*     { */
-/*         form.beSigned(*this); */
-/*         std::cout << getName() << ": signed " << form.getName() << std::endl; */
-/*     } */
-/*     catch (std::exception& e){ */
-/*         std::cout << getName() << ": couldn't sign " << form.getName() << " because " << e.what() << std::endl; */
-/*     } */
-/* } */
 
