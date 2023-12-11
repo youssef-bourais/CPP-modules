@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:38:21 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/11 13:21:04 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/11 15:31:52 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ class Bureaucrat
         Bureaucrat(Bureaucrat const &src);
         Bureaucrat &operator=(Bureaucrat const &src);
 
-        std::string getName() const; int getGrade() const;
+        std::string getName() const; 
+        int getGrade() const;
         void set_name(std::string const name);
         void set_grade(int grade);
         void increment_grade();
