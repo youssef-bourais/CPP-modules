@@ -6,11 +6,12 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 19:29:24 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/11 15:52:01 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/11 19:27:04 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form():_name(""), _sign(false), _grade_to_sign(0), _grade_to_exucute(0)
 {
@@ -72,8 +73,22 @@ int Form::get_grade_to_exucute() const
 
 std::ostream &operator<<(std::ostream &os, const Form &src)
 {
-    os<<src.get_name()<<"signed: "<<src.get_sign()<<", grade to signe: "<<src.get_grade_to_sign()<<", grade to exucute: "<<src.get_grade_to_exucute()<<std::endl;
+    os<<src.get_name()<<" signed: "<<src.get_sign()<<", grade to signe: "<<src.get_grade_to_sign()<<", grade to exucute: "<<src.get_grade_to_exucute()<<std::endl;
     return os;
 }
+
+
+void Form::beSigned(const Bureaucrat &src)
+{
+    if (src.getGrade() <= this->_grade_to_sign) 
+    {
+        this->_sign = true;
+    }
+    else 
+    {
+        throw GradeTooLowException(); 
+    }
+}
+
 
 

@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:34:14 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/11 15:52:21 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/11 19:29:00 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ std::string Bureaucrat::getName() const
     return this->_name;
 }
 
-int Bureaucrat::getGrade() const {
+int Bureaucrat::getGrade() const 
+{
     return this->_grade;
 }
 
@@ -104,4 +105,30 @@ std::ostream &operator<<(std::ostream &os, const Bureaucrat &src)
 	return (os);
 }
 
+
+void Bureaucrat::signForm(Form &src) const
+{
+    try 
+    {
+        src.beSigned(*this); 
+        std::cout << this->getName() << ": signed " << src.get_name() << std::endl;
+    } 
+    catch (std::exception &e) 
+    {
+    
+    } 
+
+}
+
+/* void Bureaucrat::signForm(const Form& form) const */
+/* { */
+/*     try */
+/*     { */
+/*         form.beSigned(*this); */
+/*         std::cout << getName() << ": signed " << form.getName() << std::endl; */
+/*     } */
+/*     catch (std::exception& e){ */
+/*         std::cout << getName() << ": couldn't sign " << form.getName() << " because " << e.what() << std::endl; */
+/*     } */
+/* } */
 

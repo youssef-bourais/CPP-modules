@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:38:27 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/11 15:53:01 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/11 16:38:05 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,14 @@
 
 int main() 
 {
-    Form a;
-
-    std::cout<<a;
-
+    try 
+    {
+        Form a("youssef", true, 160, -1);
+        std::cout<<a;
+    }
+    catch (const std::exception &e) 
+    {
+        std::cout << "Error: " << e.what() << std::endl;
+    }
 }
 

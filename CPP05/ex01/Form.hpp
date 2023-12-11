@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 19:29:32 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/11 15:52:15 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/11 19:34:37 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include "Bureaucrat.hpp"
 
+
+class Bureaucrat;
 class Form
 {
     private:
@@ -37,6 +39,7 @@ class Form
         class GradeTooHighException; 
         class GradeTooLowException;
 
+        void beSigned(const Bureaucrat &src);
 };
 
 class Form::GradeTooHighException : public std::exception
@@ -56,6 +59,8 @@ class Form::GradeTooLowException : public std::exception
             return "grade to low";
         }
 };
+
+
 
 std::ostream &operator<<(std::ostream &os, const Form &src);
 
