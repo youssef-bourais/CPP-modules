@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 19:29:32 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/11 19:34:37 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/12 11:04:40 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,18 @@ class Form
 
 class Form::GradeTooHighException : public std::exception
 {
-    public:
-        const char *what () const throw()
-        {
-            return "grade to high";
-        }
+    const char *what () const throw()
+    {
+        return "grade to high";
+    }
 };
 
 class Form::GradeTooLowException : public std::exception 
 {
-    public: 
-        const char *what () const throw() 
-        { 
-            return "grade to low";
-        }
+    const char *what () const throw() 
+    { 
+        return "grade to low";
+    }
 };
 
 
