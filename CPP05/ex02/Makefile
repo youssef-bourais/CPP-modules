@@ -1,6 +1,6 @@
 NAME = Bureaucrat
 
-SRCS = main.cpp Bureaucrat.cpp Form.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+SRCS = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 CC = c++ -std=c++98
 
@@ -14,7 +14,7 @@ OBJS = ${SRCS:.cpp=.o}
 all : $(NAME)
 
 
-$(NAME) : $(OBJS) Bureaucrat.hpp  Form.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp Makefile
+$(NAME) : $(OBJS) Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp Makefile
 		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 clean :
 	rm -rf $(OBJS)

@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:34:14 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/12 10:44:51 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/12 11:11:02 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ std::ostream &operator<<(std::ostream &os, const Bureaucrat &src)
 }
 
 
-void Bureaucrat::signForm(Form &src) const
+void Bureaucrat::signForm(AForm &src) const
 {
     try 
     {

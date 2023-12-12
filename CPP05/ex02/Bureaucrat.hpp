@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:38:21 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/12 10:48:23 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/12 11:10:48 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class Form;
+class AForm;
 class Bureaucrat
 {
     private:
@@ -35,7 +35,7 @@ class Bureaucrat
         void set_grade(int grade);
         void increment_grade();
         void decrement_grade();
-        void signForm(Form &src) const; 
+        void signForm(AForm &src) const; 
 
         class GradeTooHighException; 
         class GradeTooLowException;
