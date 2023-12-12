@@ -14,7 +14,7 @@ OBJS = ${SRCS:.cpp=.o}
 all : $(NAME)
 
 
-$(NAME) : $(OBJS) Bureaucrat.hpp Makefile
+$(NAME) : $(OBJS) Bureaucrat.hpp Form.hpp Makefile
 		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 clean :
 	rm -rf $(OBJS)

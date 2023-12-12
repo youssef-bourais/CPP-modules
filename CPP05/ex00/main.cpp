@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:38:27 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/11 13:08:32 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/12 10:47:28 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 int main() 
 { 
-    
     try 
     {
         Bureaucrat a("yassine", -9); 
@@ -29,6 +28,5 @@ int main()
     {
         std::cout << "Error: " << e.what() << std::endl;
     }
-   
 }
 

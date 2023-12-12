@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:38:21 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/11 12:53:35 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/12 10:47:00 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,18 @@ class Bureaucrat
 
 class Bureaucrat::GradeTooHighException : public std::exception
 {
-    public:
-        const char *what () const throw()
-        {
-            return "grade to high";
-        }
+    const char *what () const throw()
+    {
+        return "grade to high";
+    }
 };
 
 class Bureaucrat::GradeTooLowException : public std::exception
 {
-    public:
-        const char *what () const throw()
-        {
-            return "grade to low";
-        }
+    const char *what () const throw()
+    {
+        return "grade to low";
+    }
 };
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &src);
