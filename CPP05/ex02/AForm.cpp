@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:50:55 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/12 11:07:19 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/13 14:45:09 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-AForm::AForm():_name(""), _sign(false), _grade_to_sign(0), _grade_to_exucute(0)
+AForm::AForm():_name("hello"), _signed(false), _grade_to_sign(0), _grade_to_exucute(0)
 {
     std::cout << "default constructor called for Form class"<<std::endl;
 }
 
-AForm::AForm(const std::string name, bool sign, const int grade_to_sign, const int grade_to_exucute) : _name(name),_sign(sign), _grade_to_sign(grade_to_sign), _grade_to_exucute(grade_to_exucute) 
+AForm::AForm(const std::string name, bool sign, const int grade_to_sign, const int grade_to_exucute) : _name(name),_signed(sign), _grade_to_sign(grade_to_sign), _grade_to_exucute(grade_to_exucute) 
 {
     if (grade_to_sign > 150 || grade_to_exucute > 150)
     {
@@ -47,7 +47,7 @@ AForm &AForm::operator=(AForm const &src)
 { 
     std::cout<< "copy assignment opetator called for Form class"<<std::endl;
     if(this != &src)
-        _sign = src._sign;
+        _signed = src._signed;
     return *this;
 } 
 
@@ -58,7 +58,7 @@ std::string AForm::get_name() const
 
 bool AForm::get_sign() const
 {
-    return this->_sign;
+    return this->_signed;
 }
 
 int AForm::get_grade_to_sign() const
@@ -71,19 +71,17 @@ int AForm::get_grade_to_exucute() const
     return this->_grade_to_exucute;
 }
 
-
 std::ostream &operator<<(std::ostream &os, const AForm &src)
 {
     os<<src.get_name()<<" signed: "<<src.get_sign()<<", grade to signe: "<<src.get_grade_to_sign()<<", grade to exucute: "<<src.get_grade_to_exucute()<<std::endl;
     return os;
 }
 
-
 void AForm::beSigned(const Bureaucrat &src)
 {
     if (src.getGrade() <= this->_grade_to_sign) 
     {
-        this->_sign = true;
+        this->_signed = true;
     }
     else 
     {
