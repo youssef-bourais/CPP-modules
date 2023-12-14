@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:52:18 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/13 16:45:44 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:04:34 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", false, 72, 45), _target("")
 {
-    std::cout << "default constructor for RobotomyRequestForm called"<<std::endl;
+    /* std::cout << "default constructor for RobotomyRequestForm called"<<std::endl; */
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string target) : AForm("RobotomyRequestForm", false, 72, 45), _target(target) 
 {
-    std::cout << "default constructor for RobotomyRequestForm called"<<std::endl;
+    /* std::cout << "default constructor for RobotomyRequestForm called"<<std::endl; */
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
-    std::cout << "deconctructor called for RobotomyRequestForm"<<std::endl;
+    /* std::cout << "deconctructor called for RobotomyRequestForm"<<std::endl; */
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src) : AForm(src)
 {
-    std::cout<<"copy constructor for RobotomyRequestForm called"<<std::endl;
+    /* std::cout<<"copy constructor for RobotomyRequestForm called"<<std::endl; */
     if (this != &src) 
        *this = src; 
 }
@@ -45,6 +45,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &s
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
+    int static n;
     if (!this->get_sign()) 
     {
         throw AForm::FormNotSignedException();
@@ -55,9 +56,10 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
     }
     else 
     {
-        std::srand(std::time(0));
+        /* std::srand(std::time(0)); */
         std::cout << "Drilling noises..." << std::endl;
-        if (std::rand() % 2 == 0) 
+        /* int nbr = std::rand(); */
+        if (n % 2 == 0) 
         {
             std::cout << _target << " has been robotomized successfully." << std::endl;
         } 
@@ -65,6 +67,7 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
         {
             std::cout << "Robotomy on " << _target << " failed." << std::endl;
         }
+        n++;
     }
 }
 

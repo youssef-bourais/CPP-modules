@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:51:58 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/12 18:50:58 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:04:45 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 #define SHRUBBERYCREATIONFORM_HPP
 
 #include "AForm.hpp"
-
-/* 
-    ShrubberyCreationForm: 
-    Required grades: sign 145, exec 137 
-    Create a file <target>_shrubbery in the working directory, and writes ASCII trees
-    inside it 
-*/
 
 class ShrubberyCreationForm : public AForm
 {

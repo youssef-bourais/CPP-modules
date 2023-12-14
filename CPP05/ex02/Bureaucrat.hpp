@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:38:21 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/12 11:10:48 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/14 11:32:23 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,14 @@ class Bureaucrat
         Bureaucrat &operator=(Bureaucrat const &src);
 
         std::string getName() const; 
-        int getGrade() const;
+        int  getGrade() const;
         void set_name(std::string const name);
         void set_grade(int grade);
         void increment_grade();
         void decrement_grade();
         void signForm(AForm &src) const; 
-
+        void executeForm(AForm const & form);
+        
         class GradeTooHighException; 
         class GradeTooLowException;
 };

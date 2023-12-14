@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:51:49 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/13 15:33:03 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:58:52 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,22 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", false, 145, 137), _target("")
 {
-    std::cout << "default constructor for ShrubberyCreationForm called"<<std::endl;
+    /* std::cout << "default constructor for ShrubberyCreationForm called"<<std::endl; */
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) : AForm("ShrubberyCreationForm", false, 145, 137), _target(target) 
 {
-    std::cout << "default constructor for ShrubberyCreationForm called"<<std::endl;
+    /* std::cout << "default constructor for ShrubberyCreationForm called"<<std::endl; */
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-    std::cout << "deconctructor called for ShrubberyCreationForm"<<std::endl;
+    /* std::cout << "deconctructor called for ShrubberyCreationForm"<<std::endl; */
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &src) : AForm(src)
 {
-    std::cout<<"copy constructor for ShrubberyCreationForm called"<<std::endl;
+    /* std::cout<<"copy constructor for ShrubberyCreationForm called"<<std::endl; */
     if (this != &src) 
        *this = src; 
 }
@@ -57,9 +57,9 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
     }
     else 
     {
-        std::ofstream ofs(get_target() + "_shrubbery");
-        /* if (ofs) */
-        /* { */
+        std::ofstream ofs(get_target() + "_shrubbery", std::ios::out);
+        if (ofs.is_open()) 
+        {
             ofs << "       ###" << std::endl;
             ofs << "      #o###" << std::endl;
             ofs << "    #####o###" << std::endl;
@@ -68,11 +68,12 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
             ofs << "     # }{  #" << std::endl;
             ofs << "       }{" << std::endl;
             ofs.close();
-        /* } */
-        /* else */
-        /* { */
-        /*     throw std::ofstream::failure("Error opening file"); */
-        /* } */
+            std::cout<<"file created"<<std::endl;
+        }
+        else 
+        {
+            std::cerr<< "error : file not created"<<std::endl; 
+        }
     }
 }
 

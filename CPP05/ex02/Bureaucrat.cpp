@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:34:14 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/12 11:11:02 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/14 11:48:12 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Bureaucrat::Bureaucrat(): _name(""), _grade(0) 
 { 
-    std::cout<< "default constructor called"<<std::endl; 
+    /* std::cout<< "default constructor called"<<std::endl;  */
 } 
 
 Bureaucrat::Bureaucrat(const std::string name, int grade):_name(name), _grade(grade)
@@ -27,23 +27,23 @@ Bureaucrat::Bureaucrat(const std::string name, int grade):_name(name), _grade(gr
     {
         throw GradeTooHighException();
     }
-    std::cout<<"initialized constructor called"<<std::endl;
+    /* std::cout<<"initialized constructor called"<<std::endl; */
 }
 
 Bureaucrat::~Bureaucrat()
 {
-    std::cout<< "deconstructor called"<<std::endl;
+    /* std::cout<< "deconstructor called"<<std::endl; */
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &src):_name(src._name)
 {
-    std::cout<< "copy constructor called"<<std::endl;
+    /* std::cout<< "copy constructor called"<<std::endl; */
     *this = src;
 }
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &src)
 {
-    std::cout<< "copy assignment opetator called"<<std::endl;
+    /* std::cout<< "copy assignment opetator called"<<std::endl; */
     if(this != &src)
     {
         _grade = src._grade;
@@ -110,4 +110,15 @@ void Bureaucrat::signForm(AForm &src) const
     }
 }
 
-
+void  Bureaucrat::executeForm(AForm const &form)
+{
+	try 
+    {
+		form.execute(*this);
+		std::cout << this->getName() << " executed " << form.get_name() << std::endl;
+	}
+	catch (std::exception &e)
+    {
+		std::cout << this->getName() << " couldn't execute " << form.get_name() << " because " << e.what() << std::endl;
+	}
+}

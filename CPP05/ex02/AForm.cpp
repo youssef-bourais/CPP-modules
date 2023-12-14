@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:50:55 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/13 14:45:09 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/14 11:47:39 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 AForm::AForm():_name("hello"), _signed(false), _grade_to_sign(0), _grade_to_exucute(0)
 {
-    std::cout << "default constructor called for Form class"<<std::endl;
+    /* std::cout << "default constructor called for Form class"<<std::endl; */
 }
 
 AForm::AForm(const std::string name, bool sign, const int grade_to_sign, const int grade_to_exucute) : _name(name),_signed(sign), _grade_to_sign(grade_to_sign), _grade_to_exucute(grade_to_exucute) 
@@ -29,23 +29,23 @@ AForm::AForm(const std::string name, bool sign, const int grade_to_sign, const i
     {
         throw GradeTooHighException();
     }
-    std::cout << "initialized constructor called for Form class"<< std::endl;
+    /* std::cout << "initialized constructor called for Form class"<< std::endl; */
 }
 
 AForm::~AForm()
 {
-    std::cout << "deconstructor called for Form class"<<std::endl;
+    /* std::cout << "deconstructor called for Form class"<<std::endl; */
 }
 
 AForm::AForm(AForm const &src):_name(src._name), _grade_to_sign(src._grade_to_sign), _grade_to_exucute(src._grade_to_exucute)
 {
-    std::cout << "copy constructor called for Form class"<< std::endl;
+    /* std::cout << "copy constructor called for Form class"<< std::endl; */
     *this = src;
 }
 
 AForm &AForm::operator=(AForm const &src)
 { 
-    std::cout<< "copy assignment opetator called for Form class"<<std::endl;
+    /* std::cout<< "copy assignment opetator called for Form class"<<std::endl; */
     if(this != &src)
         _signed = src._signed;
     return *this;
