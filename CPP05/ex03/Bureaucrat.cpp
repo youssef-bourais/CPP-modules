@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:34:14 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/14 14:26:03 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/14 11:48:12 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ std::ostream &operator<<(std::ostream &os, const Bureaucrat &src)
 	os << src.getName() << ", bureaucrat grade " << src.getGrade()<<std::endl;
 	return (os);
 }
+
 
 void Bureaucrat::signForm(AForm &src) const
 {
