@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:38:27 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/14 13:50:47 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:09:37 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int main()
 {
     try 
     { 
-        Form form("one", false, 23, 33);
-        Bureaucrat bureaucrat("test", 19);
+        Form form("form1", false, 23, 33);
+        Bureaucrat bureaucrat("Bureaucrat", 19);
         
         std::cout << form;
         std::cout << bureaucrat;

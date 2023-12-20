@@ -1,37 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Intern.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 14:29:32 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/16 19:42:59 by ybourais         ###   ########.fr       */
+/*   Created: 2023/12/16 18:29:42 by ybourais          #+#    #+#             */
+/*   Updated: 2023/12/20 12:21:49 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INTERN_HPP
-#define INTERN_HPP
+#include <iostream>
 
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
-#include "ShrubberyCreationForm.hpp"
 
-class Intern
+int main()
 {
 
-    public:
-	    Intern();
-	    Intern(const Intern &src);
-	    Intern &operator=(const Intern &src);
-	    ~Intern();
-
-	    AForm* makeForm(std::string const name, std::string const target);
-};
 
 
-
-
-
-#endif
-
+}

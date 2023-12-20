@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:34:14 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/11 13:21:37 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:04:56 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const &src)
     std::cout<< "copy assignment opetator called"<<std::endl;
     if(this != &src)
     {
-        /* *const_cast<std::string*>(&_name) = src._name; */
         _grade = src._grade;
     }
     return *this;
@@ -56,14 +55,6 @@ std::string Bureaucrat::getName() const
 int Bureaucrat::getGrade() const {
     return this->_grade;
 }
-
-/**/
-/* void Bureaucrat::set_name(std::string const name) */
-/* { */
-/*     *const_cast<std::string*>(&this->_name) = name; */
-/* } */
-/**/
-/**/
 
 void Bureaucrat::set_grade(int grade)
 {
