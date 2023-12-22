@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:29:42 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/22 20:41:20 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/22 23:15:33 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class ScalarConverte
         ScalarConverte();
     public:
         ~ScalarConverte();
-        static ScalarConverte *convert(std::string str);
+        static ScalarConverte convert(std::string str);
         void print();
 
 };
@@ -38,10 +38,10 @@ ScalarConverte::~ScalarConverte()
     std::cout<< "deconstracter called"<< std::endl;
 }
 
-ScalarConverte *ScalarConverte::convert(std::string str)
+ScalarConverte ScalarConverte::convert(std::string str)
 {
     std::cout<< str<<std::endl;
-    return new ScalarConverte();
+    return ScalarConverte();
 }
 
 void ScalarConverte::print()
@@ -51,8 +51,8 @@ void ScalarConverte::print()
 
 int main()
 {
-    ScalarConverte *p = ScalarConverte::convert("hello from ther world");
-    p->print();
-
+    ScalarConverte p = ScalarConverte::convert("hello from ther world");
+    
+    p.print();
 }
 
