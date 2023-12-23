@@ -6,53 +6,45 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:29:42 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/22 23:15:33 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/23 06:57:54 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include "ScalarConverte.hpp" */
+#include "ScalarConverte.hpp"
+
 
 #include <iostream>
+#include <string>
+#include <sstream>
 
-
-class ScalarConverte
+double hexStringToDouble(const std::string& hexStr) 
 {
-    private:
-        ScalarConverte();
-    public:
-        ~ScalarConverte();
-        static ScalarConverte convert(std::string str);
-        void print();
-
-};
-
-
-
-ScalarConverte::ScalarConverte()
-{
-    std::cout<< "default constructor called"<<std::endl;
+    std::istringstream iss(hexStr);
+    double result;
+    iss >> std::hex >> result;
+    return result;
 }
+        
 
-ScalarConverte::~ScalarConverte()
-{
-    std::cout<< "deconstracter called"<< std::endl;
+#include <iostream>
+#include <limits>
+
+int main() {
+    std::cout << "Maximum value for int: " << std::numeric_limits<int>::max() << std::endl;
+    std::cout << "Maximum value for float: " << std::numeric_limits<float>::max() << std::endl;
+    std::cout << "Maximum value for double: " << std::numeric_limits<double>::max() << std::endl;
+
+    return 0;
 }
-
-ScalarConverte ScalarConverte::convert(std::string str)
-{
-    std::cout<< str<<std::endl;
-    return ScalarConverte();
-}
-
-void ScalarConverte::print()
-{
-    std::cout << "DONE"<<std::endl;
-}
-
-int main()
-{
-    ScalarConverte p = ScalarConverte::convert("hello from ther world");
-    
-    p.print();
-}
-
+/**/
+/* int main(int argc, char *argv[]) */
+/* { */
+/*     if(argc != 2) */
+/*         std::cout<<"wrong number of argument"<<std::endl; */
+/*     else */
+/*     { */
+/*         ScalarConverte::convert(argv[1]); */
+/*         * std::cout<<hexStringToDouble(argv[1])<<std::endl; */ 
+/*     } */
+/* } */
+/**/
