@@ -6,15 +6,12 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 10:30:11 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/24 07:57:01 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/24 23:17:33 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverte.hpp"
-#include <cctype>
-#include <climits>
 #include <iomanip>
-#include <limits>
 
 ScalarConverte::ScalarConverte()
 {
@@ -87,43 +84,52 @@ void print_int(double nbr)
 }
 
 
+int calculate_presicion(int len, double nbr)
+{
+    int holder = static_cast<long>(nbr);
+    int i = 0;
+    while(holder != 0)
+    {
+       holder = holder/10; 
+       i++;
+    }
+    return (len - i); 
+}
+
 void print_float(double nbr, int len)
 {
 
     float floatvar;
     floatvar = static_cast<float>(nbr);
 
-    if(nbr > std::numeric_limits<float>::max() || nbr < std::numeric_limits<float>::min())
-    {
+    if(nbr > std::numeric_limits<float>::max() || nbr < std::numeric_limits<float>::lowest())
         std::cout<< "float: impossible"<<std::endl;
-    }
-    else if (static_cast<int>(nbr) - floatvar == 0)
-    {
+    else if ((static_cast<long>(nbr) - floatvar) == 0)
         std::cout<< "float: "<<floatvar<<".0f"<<std::endl;
-    }
     else
-    {
-        std::cout<<"float: "<<std::fixed<<std::setprecision(len)<<floatvar<<"f"<<std::endl;
-    }
-    std::cout<<static_cast<int>(nbr) - floatvar<<std::endl;
+        std::cout<<"float: "<<std::fixed<<std::setprecision(calculate_presicion(len, nbr))<<floatvar<<"f"<<std::endl;
 }
 
-/* void print_double(double nbr) */
-/* { */
-/**/
-/* } */
-/**/
+void print_double(double nbr, int len)
+{    
+    float doublevar;
+    doublevar = static_cast<double>(nbr);
+
+    if(nbr > std::numeric_limits<float>::max() || nbr < std::numeric_limits<float>::lowest())
+        std::cout<< "double: impossible"<<std::endl;
+    else if ((static_cast<long>(nbr) - doublevar) == 0)
+        std::cout<< "float: "<<doublevar<<".0f"<<std::endl;
+    else
+        std::cout<<"float: "<<std::fixed<<std::setprecision(calculate_presicion(len, nbr))<<doublevar<<"f"<<std::endl;
+}
 
 void print_result(double nbr, int len)
 {
     print_char(nbr);
     print_int(nbr); 
     print_float(nbr, len);
-    /* print_double(nbr); */
+    print_double(nbr, len);
 
-    /* float floatvar = static_cast<float>(nbr); */
-   
-    /* std::cout<< "float: "<<floatvar<<std::endl; */
     std::cout<< "double: "<<nbr<<nbr<<std::endl;
 }
 
