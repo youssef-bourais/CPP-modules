@@ -6,12 +6,13 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 10:30:11 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/24 04:11:03 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/24 07:57:01 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverte.hpp"
 #include <cctype>
+#include <climits>
 #include <iomanip>
 #include <limits>
 
@@ -76,39 +77,53 @@ void print_int(double nbr)
     int intvar;
 
     intvar = static_cast<int>(nbr);
-    if(nbr == intvar)
+        
+    if(nbr <= INT_MAX && nbr >= INT_MIN)
+        std::cout<<"int: "<<intvar<<std::endl;
+    else
     {
-        std::cout<<"int: "<<intvar<<".0f"<<std::endl;
+        std::cout<<"int: impossible"<<std::endl;
+    }
+}
+
+
+void print_float(double nbr, int len)
+{
+
+    float floatvar;
+    floatvar = static_cast<float>(nbr);
+
+    if(nbr > std::numeric_limits<float>::max() || nbr < std::numeric_limits<float>::min())
+    {
+        std::cout<< "float: impossible"<<std::endl;
+    }
+    else if (static_cast<int>(nbr) - floatvar == 0)
+    {
+        std::cout<< "float: "<<floatvar<<".0f"<<std::endl;
     }
     else
     {
-        std::cout<<"int: "<<std::fixed<<std::setprecision(8)<<intvar<<"f"<<std::endl;
+        std::cout<<"float: "<<std::fixed<<std::setprecision(len)<<floatvar<<"f"<<std::endl;
     }
+    std::cout<<static_cast<int>(nbr) - floatvar<<std::endl;
 }
 
-void print_float(double nbr)
-{
+/* void print_double(double nbr) */
+/* { */
+/**/
+/* } */
+/**/
 
-}
-
-void print_double(double nbr)
-{
-
-}
-
-
-void print_result(double nbr)
+void print_result(double nbr, int len)
 {
     print_char(nbr);
     print_int(nbr); 
-    print_float(nbr);
-    print_double(nbr);
+    print_float(nbr, len);
+    /* print_double(nbr); */
 
-    int intvar = static_cast<int>(nbr);
-    float floatvar = static_cast<float>(nbr);
+    /* float floatvar = static_cast<float>(nbr); */
    
-    std::cout<< "int: "<<intvar<<std::endl;
-    std::cout<< "float: "<<floatvar<<std::endl;
+    /* std::cout<< "float: "<<floatvar<<std::endl; */
     std::cout<< "double: "<<nbr<<nbr<<std::endl;
 }
 
@@ -121,7 +136,7 @@ void ScalarConverte::convert(std::string str)
     }
     else
     {
-        print_result(holder); 
+        print_result(holder, str.length()); 
     }
 }
 
