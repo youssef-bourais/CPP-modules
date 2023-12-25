@@ -6,13 +6,15 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 10:30:11 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/26 00:35:11 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/26 00:48:20 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverte.hpp"
 
-int calculate_presicion(int len, double nbr);
+#include <sstream> //istringstream
+#include <iomanip> // setpresicion 
+
 
 ScalarConverte::ScalarConverte()
 {
@@ -111,16 +113,16 @@ void print_float(double nbr, int len, bool with_dot)
     else if (!with_dot)
         std::cout<< "float: "<<std::fixed<<std::setprecision(1)<<floatvar<<"f"<<std::endl;
     else
-        std::cout<<"float:: "<<std::fixed<<std::setprecision(calculate_presicion(len, nbr))<<floatvar<<"f"<<std::endl;
+        std::cout<<"float: "<<std::fixed<<std::setprecision(calculate_presicion(len, nbr))<<floatvar<<"f"<<std::endl;
 }
 
 void print_double(double nbr, int len, bool with_dot)
 {    
 
     if (!with_dot && nbr == nbr)
-        std::cout<< "double: "<<std::fixed<<std::setprecision(1)<<nbr<<".0"<<std::endl;
+        std::cout<< "double: "<<std::fixed<<std::setprecision(1)<<nbr<<std::endl;
     else
-        std::cout<<"double:: "<<std::fixed<<std::setprecision(calculate_presicion(len, nbr))<<nbr<<std::endl;
+        std::cout<<"double: "<<std::fixed<<std::setprecision(calculate_presicion(len, nbr))<<nbr<<std::endl;
 }
 
 void print_result(double nbr, std::string str)

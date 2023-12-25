@@ -1,1 +1,0 @@
-checking the error by a function that converte string to double and type cast each variable
