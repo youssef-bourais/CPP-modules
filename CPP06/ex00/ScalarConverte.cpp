@@ -6,12 +6,13 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 10:30:11 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/24 23:17:33 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/26 00:35:11 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverte.hpp"
-#include <iomanip>
+
+int calculate_presicion(int len, double nbr);
 
 ScalarConverte::ScalarConverte()
 {
@@ -28,7 +29,6 @@ int is_number(const std::string s, double *holder)
     std::istringstream num(s);
 
     num >> *holder;
-
     if(!num.fail() && num.eof()) 
     {
         return 1;
@@ -36,7 +36,7 @@ int is_number(const std::string s, double *holder)
     return 0;
 }
 
-void print_error()
+void print_error(bool inf)
 {
     std::string str;
     
@@ -44,6 +44,8 @@ void print_error()
     std::cout<< "char: "<<str<<std::endl;
     std::cout<< "int: "<<str<<std::endl;
     std::cout<< "float: "<<str<<std::endl;
+    if(inf)
+        str = "inf";
     std::cout<< "double: "<<str<<std::endl;
 }
 
@@ -96,53 +98,53 @@ int calculate_presicion(int len, double nbr)
     return (len - i); 
 }
 
-void print_float(double nbr, int len)
+void print_float(double nbr, int len, bool with_dot)
 {
 
     float floatvar;
     floatvar = static_cast<float>(nbr);
 
-    if(nbr > std::numeric_limits<float>::max() || nbr < std::numeric_limits<float>::lowest())
-        std::cout<< "float: impossible"<<std::endl;
-    else if ((static_cast<long>(nbr) - floatvar) == 0)
-        std::cout<< "float: "<<floatvar<<".0f"<<std::endl;
+    if(nbr > std::numeric_limits<float>::max()) 
+        std::cout<< "float: inff"<<std::endl;
+    else if(nbr < -std::numeric_limits<float>::max())
+        std::cout<< "float: -inff"<<std::endl;
+    else if (!with_dot)
+        std::cout<< "float: "<<std::fixed<<std::setprecision(1)<<floatvar<<"f"<<std::endl;
     else
-        std::cout<<"float: "<<std::fixed<<std::setprecision(calculate_presicion(len, nbr))<<floatvar<<"f"<<std::endl;
+        std::cout<<"float:: "<<std::fixed<<std::setprecision(calculate_presicion(len, nbr))<<floatvar<<"f"<<std::endl;
 }
 
-void print_double(double nbr, int len)
+void print_double(double nbr, int len, bool with_dot)
 {    
-    float doublevar;
-    doublevar = static_cast<double>(nbr);
 
-    if(nbr > std::numeric_limits<float>::max() || nbr < std::numeric_limits<float>::lowest())
-        std::cout<< "double: impossible"<<std::endl;
-    else if ((static_cast<long>(nbr) - doublevar) == 0)
-        std::cout<< "float: "<<doublevar<<".0f"<<std::endl;
+    if (!with_dot && nbr == nbr)
+        std::cout<< "double: "<<std::fixed<<std::setprecision(1)<<nbr<<".0"<<std::endl;
     else
-        std::cout<<"float: "<<std::fixed<<std::setprecision(calculate_presicion(len, nbr))<<doublevar<<"f"<<std::endl;
+        std::cout<<"double:: "<<std::fixed<<std::setprecision(calculate_presicion(len, nbr))<<nbr<<std::endl;
 }
 
-void print_result(double nbr, int len)
-{
+void print_result(double nbr, std::string str)
+{ 
+    bool with_dot = str.find(".") != SIZE_T_MAX;
     print_char(nbr);
     print_int(nbr); 
-    print_float(nbr, len);
-    print_double(nbr, len);
-
-    std::cout<< "double: "<<nbr<<nbr<<std::endl;
+    print_float(nbr, str.length(), with_dot);
+    print_double(nbr, str.length(), with_dot);
 }
 
 void ScalarConverte::convert(std::string str)
 {
+    bool inf = false;
     double holder;
     if(!is_number(str, &holder))
     {
-        print_error(); 
+        if(std::numeric_limits<double>::infinity() == holder)
+            inf = true;
+        print_error(inf); 
     }
     else
     {
-        print_result(holder, str.length()); 
+        print_result(holder, str); 
     }
 }
 
