@@ -5,19 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/16 18:29:42 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/26 07:08:24 by ybourais         ###   ########.fr       */
+/*   Created: 2023/12/26 02:36:14 by ybourais          #+#    #+#             */
+/*   Updated: 2023/12/26 05:22:50 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverte.hpp"
+#include "Base.hpp"
 
-int main(int ac, char *av[])
+
+int main()
 {
-    if(ac == 2) 
-        ScalarConverte::convert(av[1]);
-    else
-        std::cout<<"no argument passed"<<std::endl;
-    return(0);
-}
+    srand(time(0)); 
+   
+    Base *one = new A();
+    Base *two = generate();
+	
 
+    identify(one);
+    identify(*one);
+    
+    identify(two);
+    identify(*two);
+
+
+    delete one;
+    if(two)
+        delete two;
+
+}

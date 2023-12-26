@@ -1,23 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/16 18:29:42 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/26 07:08:24 by ybourais         ###   ########.fr       */
+/*   Created: 2023/12/26 02:36:10 by ybourais          #+#    #+#             */
+/*   Updated: 2023/12/26 05:07:53 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverte.hpp"
+#ifndef BASE_HPP
+#define BASE_HPP
+#include <iostream>
 
-int main(int ac, char *av[])
+class Base
 {
-    if(ac == 2) 
-        ScalarConverte::convert(av[1]);
-    else
-        std::cout<<"no argument passed"<<std::endl;
-    return(0);
-}
+    public:
+        virtual ~Base();
+};
+
+class A : public Base
+{
+
+};
+
+class B : public Base
+{
+
+};
+
+class C : public Base
+{
+
+};
+
+Base* generate();
+void identify(Base* p); 
+void identify(Base& p); 
+
+#endif
+
 
