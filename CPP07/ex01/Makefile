@@ -1,4 +1,4 @@
-NAME = whatever
+NAME = iter
 
 SRCS = main.cpp
 
@@ -13,7 +13,7 @@ OBJS = ${SRCS:.cpp=.o}
 
 all : $(NAME)
 
-$(NAME) : $(OBJS) whatever.hpp Makefile
+$(NAME) : $(OBJS) Makefile
 		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 clean :
 	rm -rf $(OBJS)
