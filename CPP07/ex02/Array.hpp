@@ -6,8 +6,20 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 05:44:06 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/28 05:44:17 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/28 06:31:42 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
 
+
+
+
+
+
+
+
+
+
+#endif

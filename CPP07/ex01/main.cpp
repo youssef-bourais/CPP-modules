@@ -6,26 +6,11 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 05:06:36 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/28 05:44:10 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/28 05:48:59 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
-
-template <typename T, typename Function>
-void iter(T *array, int lenth, Function func)
-{
-    for(int i = 0;i < lenth; i++)
-        func(array[i]);
-}
-
-
-template <typename T>
-void printvalue(const T &element)
-{
-    std::cout<< element<<" ";
-}
-
 
 
 int main()

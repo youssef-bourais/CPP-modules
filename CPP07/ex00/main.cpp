@@ -6,41 +6,12 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 03:59:30 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/28 05:04:53 by ybourais         ###   ########.fr       */
+/*   Updated: 2023/12/28 05:47:07 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "whatever.hpp"
 
-template <typename T>
-void swap(T &a, T &b)
-{
-    T tmp;
-    tmp = a;
-    a = b;
-    b = tmp;
-}
-
-
-template <typename T> 
-T max(const T &a, const T &b)
-{
-    if(a > b)
-        return a;
-    else
-        return b;
-}
-
-template <typename T>
-T min(const T &a, const T &b)
-{
-    if(a < b)
-    {
-        return a;
-    }
-    else
-        return b;
-}
 
 int main()
 {
