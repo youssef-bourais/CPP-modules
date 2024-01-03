@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:41:16 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/03 06:49:02 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/03 08:12:49 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int Span::shortestSpan()
         for(unsigned int i = 0;i < data.size() - 1;i++)
         {
             if(short_span > sortedArray[i + 1] - sortedArray[i])
-                short_span = sortedArray[i + 1] - sortedArray[i + 1];   
+                short_span = sortedArray[i + 1] - sortedArray[i];   
         }
     }
     return short_span;
@@ -82,7 +82,26 @@ int Span::longestSpan()
         std::vector<int> sortedArray = data;
         std::sort(sortedArray.begin(), sortedArray.end());
         longestSpan = *(sortedArray.end() - 1) - *sortedArray.begin(); 
-        
     }
     return longestSpan;
+}
+
+void Span::CreatRang(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+    if(static_cast<size_t>(end - begin) > N - data.size())
+    {
+        throw std::exception();
+    }
+    data.insert(data.end(), begin, end);
+}
+
+void Span::print()
+{
+    std::vector<int>::iterator it = data.begin();
+    while(it != data.end())
+    {
+        std::cout<<*it<< " ";
+        it++;
+    }
+    std::cout<<std::endl;
 }
