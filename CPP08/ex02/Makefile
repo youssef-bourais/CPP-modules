@@ -1,6 +1,6 @@
-NAME = Span
+NAME = mutantStack
 
-SRCS = main.cpp Span.cpp
+SRCS = main.cpp
 
 CC = c++ -std=c++98
 
@@ -13,7 +13,7 @@ OBJS = ${SRCS:.cpp=.o}
 
 all : $(NAME)
 
-$(NAME) : $(OBJS) Span.hpp Makefile
+$(NAME) : $(OBJS) MutantStack.hpp Makefile
 		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 clean :
 	rm -rf $(OBJS)
