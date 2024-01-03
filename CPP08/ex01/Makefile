@@ -1,6 +1,6 @@
-NAME = easyfind
+NAME = Span
 
-SRCS = main.cpp
+SRCS = main.cpp Span.cpp
 
 CC = c++ -std=c++98
 
@@ -13,7 +13,7 @@ OBJS = ${SRCS:.cpp=.o}
 
 all : $(NAME)
 
-$(NAME) : $(OBJS) easyfind.hpp Makefile
+$(NAME) : $(OBJS) Span.hpp Makefile
 		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 clean :
 	rm -rf $(OBJS)
