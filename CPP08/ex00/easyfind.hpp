@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 23:59:07 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/02 07:08:13 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/03 01:10:20 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ public:
 template <typename T>
 typename T::const_iterator easyfind(const T &container, int n)
 {
-    typename T::const_iterator it = std::find(std::begin(container), std::end(container), n);
+    typename T::const_iterator it = std::find(container.begin(), container.end(), n); 
     if(it == container.end())
         throw ElementNotFound();
     return it;
