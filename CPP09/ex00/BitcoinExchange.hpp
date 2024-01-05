@@ -6,8 +6,15 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 07:16:39 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/05 07:16:40 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/06 00:11:03 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef BITCOINEXCHANGE_HPP
+#define BITCOINEXCHANGE_HPP
 
+
+
+
+
+#endif
