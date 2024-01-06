@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 03:30:37 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/06 05:20:40 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/06 07:51:52 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <iostream>
 #include <map>
 #include <sstream> //istringstream
+#include <string>
 
 void printDataBase(std::map<std::string, float> const database);
 
@@ -52,8 +53,10 @@ int fill_database(std::map<std::string, float> &database, char DataSeparator, st
     return 1;
 }
 
+
 int StorUserData(std::map<std::string, float> &database, char DataSeparator, std::string FilePath)
 {
+
    std::ifstream iFile(FilePath);
     if(!iFile) 
     {
@@ -65,14 +68,15 @@ int StorUserData(std::map<std::string, float> &database, char DataSeparator, std
     while(std::getline(iFile, line)) 
     {
         size_t comma = line.find(DataSeparator);
-        std::istringstream num(line.substr(comma + 1));
-        num >> database[line.substr(0, comma)];
-        if(!(!num.fail() && num.eof()))
-            database[line.substr(0, comma)] = -1;
+        std::string key = line.substr(0, comma);
+        std::string value = line.substr(comma + 1);
+        std::istringstream num(value);
+        num >> database[key];
     }
     iFile.close();
     return 1;
 }
+
 
 int readDataFromUser(std::string file)
 {
