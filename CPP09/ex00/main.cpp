@@ -6,25 +6,21 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 03:30:37 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/07 05:35:56 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/07 08:09:38 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include <cmath>
-#include <cstddef>
+#include <cstdlib>
 #include <fstream> 
-#include <iomanip>
-#include <ios>
 #include <iostream>
-#include <iterator>
 #include <map>
 #include <sstream> //istringstream
-#include <string>
 
 #define NO_PIPE -1337
 
-void PrintDataBase(std::map<std::string, float> database);
+void PrintDataBase(std::map<std::string, float> const database);
 int GetDatabase(std::map<std::string, float> &database, char DataSeparator, std::string FilePath)
 {
    std::ifstream iFile(FilePath);
@@ -122,28 +118,77 @@ int CheckDate(std::string date)
     return 1;
 }
 
-int value_multiplied_by_the_exchange_rate(std::map<std::string, float> Data,float value, std::string date)
-{
-    int new_value = 0;
 
-    return new_value;
+long converter(std::string date)
+{
+    long year;
+    long month;
+    long day;
+    char dach;
+    std::istringstream num(date);
+
+    num >> year >> dach >> month >> dach >> day;
+
+    year *= std::pow(10, 4);
+    month *= std::pow(10, 2);
+
+    return (year + month + day);
 }
+
+
+// function slowing the programe need to fix
+int value_multiplied_by_the_exchange_rate(std::map<std::string, float> &Data, std::string date, float value)
+{
+    int new_value = 100;
+    std::map<std::string, float>::const_iterator it;
+    long DateInDataBase;
+    long DateInUserFile;
+
+    DateInUserFile = converter(date);
+    it = Data.begin();   
+    std::cout<< it->second<<" "<<it->second<<std::endl; ///////////////////////////////////////////////
+    exit(0);
+    if(value <= converter(it->first))
+        return value*it->second;
+    while(it != Data.end())
+    {
+        DateInDataBase = converter(it->first);
+        if(DateInDataBase == DateInUserFile)
+        {
+            new_value = value*it->second;
+            return new_value;
+        }
+        else if(DateInDataBase > DateInUserFile)
+        {
+            it--;
+            return value*it->second;
+        }
+        it++;
+    }
+    it--;
+    new_value = it->second;
+    PrintDataBase(Data);
+    return new_value*value;
+}
+
 
 void PrintResult(std::map<std::string, float> &Data, std::map<std::string, float> &Txt)
 {
-    (void)Data;
-
+    bool ValidDate;
+    int Value = 0;
     std::map<std::string, float>::const_iterator it;
     for (it = Txt.begin(); it != Txt.end(); it++) 
     {
-        if(it->second == NO_PIPE || !CheckDate(it->first))
-            std::cout<< "Error: bad input => "<<it->first<<std::endl;
-        else if(it->second >= INT_MAX)
-            std::cout<<"Error: to large number."<<std::endl;
-        else if(it->second < 0)
-            std::cout<<" Error: not a positive number. "<<std::endl;
-        else
-            std::cout <<it->first <<" => "<< it->second << " = "<<value_multiplied_by_the_exchange_rate(Data, it->second, it->first)<<std::endl;
+        ValidDate = CheckDate(it->first);
+        Value = value_multiplied_by_the_exchange_rate(Data, it->first, it->second);
+        /* if(it->second == NO_PIPE || !ValidDate) */
+        /*     std::cout<< "Error: bad input => "<<it->first<<std::endl; */
+        /* else if(it->second >= INT_MAX) */
+        /*     std::cout<<"Error: to large number."<<std::endl; */
+        /* else if(it->second < 0) */
+        /*     std::cout<<" Error: not a positive number. "<<std::endl; */
+        /* else */
+        /*     std::cout <<it->first <<" => "<< it->second << " = "<<Value<<std::endl; */
     }
 }
 
@@ -172,7 +217,6 @@ int main(int ac, char *av[])
 {
     std::map<std::string, float> DataBase;
     std::map<std::string, float> UserData;
-    /* std::map<std::string, float>::const_iterator it; // print latter */
     if (ac != 2) 
     {
         std::cout << "please provide one file!"<<std::endl;
@@ -181,5 +225,6 @@ int main(int ac, char *av[])
     if(!getDataBase(DataBase) || !readDataFromUser(av[1], UserData))
         return EXIT_FAILURE;
     PrintResult(DataBase, UserData);
+    /* PrintDataBase(DataBase); */
     return EXIT_SUCCESS;
 }
