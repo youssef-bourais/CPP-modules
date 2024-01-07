@@ -1,5 +1,3 @@
-
-
 import random
 from datetime import datetime, timedelta
 
@@ -19,4 +17,3 @@ with open('input.txt', 'w') as file:
         date = generate_random_date(start_date, end_date)
         value = round(random.uniform(1, 100), 2)
         file.write(f"{date} | {value}\n")
-
