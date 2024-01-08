@@ -6,54 +6,59 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 03:30:37 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/07 08:09:38 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/08 01:54:24 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include <cmath>
+#include <cstddef>
 #include <cstdlib>
 #include <fstream> 
+#include <iomanip>
+#include <ios>
 #include <iostream>
 #include <map>
 #include <sstream> //istringstream
 
-#define NO_PIPE -1337
+#define NO_SEPARATOR -1337
 
 void PrintDataBase(std::map<std::string, float> const database);
-int GetDatabase(std::map<std::string, float> &database, char DataSeparator, std::string FilePath)
-{
-   std::ifstream iFile(FilePath);
-    if(!iFile) 
-    {
-        std::cerr << "File not opened!\n";
-        return 0;
-    }
-    std::string line;
-    int i = 0;
-    std::getline(iFile, line);
-    while(std::getline(iFile, line)) 
-    {
-        size_t comma = line.find(DataSeparator);
-        if(comma == std::string::npos)
-        {
-            std::cout<<"Missing "<<DataSeparator<<" in the Database, line: "<< i<<'\n';            
-            return 0; 
-        }
-        std::istringstream num(line.substr(comma + 1));
-        num >> database[line.substr(0, comma)];
-        if(!(!num.fail() && num.eof()))
-        {
-            std::cout<<"not a number!"<<'\n';
-            return 0;
-        }
-        i++;
-    }
-    iFile.close();
-    return 1;
-}
 
-int StorUserData(std::map<std::string, float> &Txt_TxT, char TxtSeparator, std::string FilePath)
+/* int GetDatabase(std::map<std::string, float> &database, char DataSeparator, std::string FilePath) */
+/* { */
+/*    std::ifstream iFile(FilePath); */
+/*     if(!iFile)  */
+/*     { */
+/*         std::cerr << "File not opened!\n"; */
+/*         return 0; */
+/*     } */
+/*     std::string line; */
+/*     int i = 0; */
+/*     std::getline(iFile, line); */
+/*     while(std::getline(iFile, line))  */
+/*     { */
+/*         size_t comma = line.find(DataSeparator); */
+/*         if(comma == std::string::npos) */
+/*         { */
+/*             std::cout<<"Missing "<<DataSeparator<<" in the Database, line: "<< i<<'\n';             */
+/*             return 0;  */
+/*         } */
+/*         std::istringstream num(line.substr(comma + 1)); */
+/*         num >> database[line.substr(0, comma)]; */
+/*         if(!(!num.fail() && num.eof())) */
+/*         { */
+/*             std::cout<<"not a number!"<<'\n'; */
+/*             return 0; */
+/*         } */
+/*         i++; */
+/*     } */
+/*     iFile.close(); */
+/*     return 1; */
+/* } */
+/**/
+
+int StorData(std::map<std::string, float> &DataContainer, char TxtSeparator, std::string FilePath)
 {
     std::ifstream iFile(FilePath);
     if(!iFile) 
@@ -63,20 +68,20 @@ int StorUserData(std::map<std::string, float> &Txt_TxT, char TxtSeparator, std::
     }
     std::string line;
     std::getline(iFile, line);
-    int i = 0;
     while(std::getline(iFile, line)) 
     {
+        if(line.empty())
+            continue;
         size_t comma = line.find(TxtSeparator);
         std::string key = line.substr(0, comma);
         std::string value = line.substr(comma + 1);
         std::istringstream num(value);
-        num >> Txt_TxT[key];
+        num >> DataContainer[key];
         if(comma == std::string::npos)
         {
-            Txt_TxT[key] = NO_PIPE;
+            DataContainer[key] = NO_SEPARATOR;
             comma = 0;
         }
-        i++;
     }
     iFile.close();
     return 1;
@@ -136,20 +141,18 @@ long converter(std::string date)
 }
 
 
-// function slowing the programe need to fix
-int value_multiplied_by_the_exchange_rate(std::map<std::string, float> &Data, std::string date, float value)
+double value_multiplied_by_the_exchange_rate(std::map<std::string, float> &Data, std::string date, float value)
 {
-    int new_value = 100;
+    int new_value = 0;
     std::map<std::string, float>::const_iterator it;
-    long DateInDataBase;
-    long DateInUserFile;
+    double DateInDataBase;
+    double DateInUserFile;
 
     DateInUserFile = converter(date);
     it = Data.begin();   
-    std::cout<< it->second<<" "<<it->second<<std::endl; ///////////////////////////////////////////////
-    exit(0);
-    if(value <= converter(it->first))
+    if(DateInUserFile <= converter(it->first))
         return value*it->second;
+    int i = 0;
     while(it != Data.end())
     {
         DateInDataBase = converter(it->first);
@@ -163,11 +166,11 @@ int value_multiplied_by_the_exchange_rate(std::map<std::string, float> &Data, st
             it--;
             return value*it->second;
         }
+        i++;
         it++;
     }
     it--;
     new_value = it->second;
-    PrintDataBase(Data);
     return new_value*value;
 }
 
@@ -175,28 +178,25 @@ int value_multiplied_by_the_exchange_rate(std::map<std::string, float> &Data, st
 void PrintResult(std::map<std::string, float> &Data, std::map<std::string, float> &Txt)
 {
     bool ValidDate;
-    int Value = 0;
+    double Value = 0;
     std::map<std::string, float>::const_iterator it;
     for (it = Txt.begin(); it != Txt.end(); it++) 
     {
         ValidDate = CheckDate(it->first);
         Value = value_multiplied_by_the_exchange_rate(Data, it->first, it->second);
-        /* if(it->second == NO_PIPE || !ValidDate) */
-        /*     std::cout<< "Error: bad input => "<<it->first<<std::endl; */
-        /* else if(it->second >= INT_MAX) */
-        /*     std::cout<<"Error: to large number."<<std::endl; */
-        /* else if(it->second < 0) */
-        /*     std::cout<<" Error: not a positive number. "<<std::endl; */
-        /* else */
-        /*     std::cout <<it->first <<" => "<< it->second << " = "<<Value<<std::endl; */
-    }
-}
+        if(it->second == NO_SEPARATOR || !ValidDate)
+            std::cout<< "Error: bad input => "<<it->first<<std::endl;
+        else if(it->second >= INT_MAX)
+            std::cout<<"Error: to large number."<<std::endl;
+        else if(it->second < 0)
+            std::cout<<" Error: not a positive number. "<<std::endl;
+        else
+        {
 
-int readDataFromUser(std::string file, std::map<std::string, float> &UserData)
-{
-    if(!StorUserData(UserData, '|', file))
-        return 0;
-    return 1;
+            std::cout <<it->first <<" => "<< it->second << " = ";
+            std::cout <<Value<<std::endl;
+        }
+    }
 }
 
 void PrintDataBase(std::map<std::string, float> const database)
@@ -204,13 +204,6 @@ void PrintDataBase(std::map<std::string, float> const database)
     std::map<std::string, float>::const_iterator it;
     for (it = database.begin(); it != database.end(); ++it) 
         std::cout <<it->first <<" | "<< it->second << std::endl;
-}
-
-int  getDataBase(std::map<std::string, float> &DataBase)
-{
-    if(!GetDatabase(DataBase, ',', "./data.csv"))
-        return 0;
-    return 1;
 }
 
 int main(int ac, char *av[])
@@ -222,9 +215,9 @@ int main(int ac, char *av[])
         std::cout << "please provide one file!"<<std::endl;
         return 0;
     }
-    if(!getDataBase(DataBase) || !readDataFromUser(av[1], UserData))
+    if(!StorData(DataBase, ',', "./data.csv") || !StorData(UserData, '|', av[1]))
         return EXIT_FAILURE;
     PrintResult(DataBase, UserData);
-    /* PrintDataBase(DataBase); */
+    /* PrintDataBase(UserData); */
     return EXIT_SUCCESS;
 }
