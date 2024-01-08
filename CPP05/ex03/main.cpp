@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:38:27 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/14 16:11:03 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/08 03:47:51 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "Intern.hpp"
+#include <cstdlib>
 
 
-int main() 
+int f_main() 
 {   
     Intern intern;
 
@@ -40,4 +41,11 @@ int main()
     return 0;
 }
 
+int main()
+{
 
+
+
+    f_main();
+    system("leaks Bureaucrat");
+}

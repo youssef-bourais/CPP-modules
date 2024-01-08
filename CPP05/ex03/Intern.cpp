@@ -6,11 +6,12 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:29:37 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/14 16:06:53 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/08 03:45:20 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
+#include <cstddef>
 
 Intern::Intern()
 { 
@@ -51,7 +52,7 @@ AForm *Intern::makeForm(std::string const name, std::string const target)
 			std::cout << "Intern creates " << name << std::endl;
             for (int j = 0;j < 3; j++) 
             {
-                if (j != i && objects[i] != nullptr) 
+                if (j != i && objects[i] != NULL) 
                    delete objects[j];  
             }
 			return (objects[i]);
@@ -59,7 +60,7 @@ AForm *Intern::makeForm(std::string const name, std::string const target)
         else 
         {
             delete objects[i];
-            objects[i] = nullptr;
+            objects[i] = NULL;
         }
 		++i;
 	}
