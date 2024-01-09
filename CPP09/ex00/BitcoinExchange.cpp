@@ -6,11 +6,12 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 07:16:31 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/09 02:25:13 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/09 06:53:36 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+#include <charconv>
 
 
 int StorData(std::list<KeyValue> &DataContainer, char TxtSeparator, std::string FilePath)
@@ -102,8 +103,8 @@ long converter(std::string date)
 
     num >> Year >> Dach >> Month >> Dach >> Day;
 
-    Year *= std::pow(10, 4);
-    Month *= std::pow(10, 2);
+    Year *= 10000;
+    Month *= 100;
 
     return (Year + Month + Day);
 }
@@ -119,7 +120,6 @@ double ValueMultipliedByTheExchangeRate(std::list<KeyValue> &Data, std::string d
     it = Data.begin();   
     if(DateInUserFile <= converter(it->key))
         return value*it->value;
-    int i = 0;
     while(it != Data.end())
     {
         DateInDataBase = converter(it->key);
@@ -130,7 +130,6 @@ double ValueMultipliedByTheExchangeRate(std::list<KeyValue> &Data, std::string d
             it--;
             return value*it->value;
         }
-        i++;
         it++;
     }
     it--;
@@ -139,13 +138,12 @@ double ValueMultipliedByTheExchangeRate(std::list<KeyValue> &Data, std::string d
 
 void PrintResult(std::list<KeyValue> &Data, std::list<KeyValue> &Txt)
 {
-    bool ValidDate;
     double Value = 0;
+    bool ValidDate;
     std::list<KeyValue>::const_iterator it;
     for (it = Txt.begin(); it != Txt.end(); it++) 
     {
         ValidDate = CheckDate(it->key);
-        Value = ValueMultipliedByTheExchangeRate(Data, it->key, it->value);
         if(it->value == NO_SEPARATOR || !ValidDate)
             std::cout<< "Error: bad input => "<<it->key<<std::endl;
         else if(it->value >= INT_MAX)
@@ -153,23 +151,18 @@ void PrintResult(std::list<KeyValue> &Data, std::list<KeyValue> &Txt)
         else if(it->value < 0)
             std::cout<<"Error: not a positive number. \n";
         else
+        {
+            Value = ValueMultipliedByTheExchangeRate(Data, it->key, it->value);
             std::cout <<it->key <<" => "<< it->value << " = "<<Value<<std::endl;
+        }
     }
 }
 
-void PrintDataBase( std::list<KeyValue>  const database)
+void PrintDataBase( std::list<KeyValue>  database)
 {
     std::list<KeyValue>::const_iterator it;
     for (it = database.begin(); it != database.end(); ++it) 
         std::cout <<it->key <<" | "<< it->value << std::endl;
 }
-
-
-
-
-
-
-
-
 
 

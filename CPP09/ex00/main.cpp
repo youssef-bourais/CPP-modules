@@ -6,11 +6,12 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 03:30:37 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/08 04:16:17 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/09 06:53:30 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+#include <vector>
 
 
 

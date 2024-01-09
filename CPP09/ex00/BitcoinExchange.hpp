@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 07:16:39 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/08 04:19:22 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/09 06:53:34 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define BITCOINEXCHANGE_HPP
 
 #include <iostream>
-#include <cmath>
 #include <fstream> 
 #include <list>
 #include <sstream> //istringstream
