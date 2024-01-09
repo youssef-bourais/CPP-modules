@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 10:30:11 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/26 00:48:20 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/09 03:22:42 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,9 @@ void print_int(double nbr)
         std::cout<<"int: impossible"<<std::endl;
     }
 }
+
+
+
 
 
 int calculate_presicion(int len, double nbr)

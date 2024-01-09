@@ -2,6 +2,7 @@ NAME = Form
 
 SRCS = main.cpp Bureaucrat.cpp Form.cpp
 
+
 CC = c++ -std=c++98
 
 CFLAGS = -Wall -Werror -Wextra

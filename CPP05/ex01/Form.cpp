@@ -6,12 +6,13 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 19:29:24 by ybourais          #+#    #+#             */
-/*   Updated: 2023/12/11 19:27:04 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/09 03:21:43 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
+
 
 Form::Form():_name(""), _sign(false), _grade_to_sign(0), _grade_to_exucute(0)
 {
