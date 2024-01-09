@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 07:16:31 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/08 04:21:48 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/09 02:21:42 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,5 +163,42 @@ void PrintDataBase( std::list<KeyValue>  const database)
     for (it = database.begin(); it != database.end(); ++it) 
         std::cout <<it->key <<" | "<< it->value << std::endl;
 }
+
+int bainary_search(int arr[], int begin, int end, int target)
+{
+    if(begin <= end)
+    {
+
+    int midle = begin + (end - begin) / 2;
+    if(arr[midle] == target)
+        return midle;
+    else if(target > arr[midle])
+        return bainary_search(arr, midle + 1, end, target);
+
+    else if (target < arr[midle]) 
+        return bainary_search(arr, begin, midle - 1, target);;
+    }
+    return -1;
+}
+
+int main()
+{
+    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int size = sizeof(arr)/sizeof(arr[0]);
+
+    int index = bainary_search(arr, 0, size - 1, 8);
+    
+    std::cout << index<<std::endl;
+
+}
+
+
+
+
+
+
+
+
+
 
 
