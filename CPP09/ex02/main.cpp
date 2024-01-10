@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 04:27:53 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/09 12:04:24 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/09 12:18:22 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,11 @@ void GetTakingTime(std::clock_t Start)
     std::cout << "\nElapsed time: " << Time << " microseconds" << std::endl;
 }
 
+#include <thread>
 int main(int ac, char **av)
 {
     std::clock_t Start = std::clock();
+    
     std::vector<int> DataVector;
     std::deque<int> DataDeque;
     
@@ -77,6 +79,7 @@ int main(int ac, char **av)
     
     DisplayContainers(DataVector, DataDeque);
     OPETATION();
+    std::this_thread::sleep_for(std::chrono::seconds(1));
     GetTakingTime(Start);
     
     return 0;
