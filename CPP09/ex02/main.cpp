@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 04:27:53 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/12 06:34:59 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/12 08:24:59 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,42 +41,36 @@ int ParssNumbers(char **Table, std::vector<int> &Vector, std::deque<int> &Deque)
     return 1;
 }
 
-void OPETATION(std::vector<int> Vector)
+std::vector<std::vector<int> > OPETATION(std::vector<int>::const_iterator  VBeging, std::vector<int>::const_iterator VEnd)
 {
     std::vector<int> pairs;
     std::vector<std::vector<int> > mainOne;
-
+    
     std::vector<int>::const_iterator it;
-    it = Vector.begin();
-    while (it != Vector.end()) 
-    {
+    it = VBeging;
+
+    /* while (it != VEnd) */
+    /* { */
        std::vector<int>::const_iterator tmp = it;
        int i = 0;
-       while(i < 2 && tmp != Vector.end())
+       while(i < 2 && it != VEnd)
        {
             pairs.push_back(*tmp); 
-            tmp++;
+            it++;
             i++;
        }
        mainOne.push_back(pairs);
-       pairs.clear();
-       it = tmp;
-    }
-    std::vector<std::vector<int> >::const_iterator itVectorOFVector = mainOne.begin();
-    while (itVectorOFVector != mainOne.end()) 
+       /* pairs.clear(); */
+       /* it = tmp; */
+    /* } */
+    if(VBeging != VEnd)
     {
-        std::vector<int>::const_iterator p = itVectorOFVector->begin();
-        int i = 0;
-        while (p != itVectorOFVector->end()) 
-        {
-           std::cout << *p<<" ";
-           p++;
-        }
-        itVectorOFVector++;
-        i++;
-        std::cout<<std::endl;
+        std::vector<std::vector<int> > result = OPETATION(VBeging + 1, VEnd);
+        return result;
+
     }
-}
+    return mainOne;
+ }
 
 void DisplayContainers(std::vector<int> const &DataVector, std::deque<int> const &DataDeque)
 {    
@@ -111,8 +105,19 @@ int main(int ac, char **av)
     }
     
     /* DisplayContainers(DataVector, DataDeque); */
-    OPETATION(DataVector);
-    std::this_thread::sleep_for(std::chrono::seconds(1));
+    std::vector<std::vector<int> > result = OPETATION(DataVector.begin(), DataVector.end());
+    std::vector<std::vector<int> >::const_iterator it = result.begin();
+    while (it != result.end()) 
+    {
+        std::vector<int>::const_iterator pair = it->begin();
+        while (pair != it->end()) 
+        {
+            std::cout<< *pair<<" ";
+            pair++;
+        }
+        it++;
+    }
+    /* std::this_thread::sleep_for(std::chrono::seconds(1)); */
     GetTakingTime(Start);
     
     return 0;
