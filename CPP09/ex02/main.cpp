@@ -6,11 +6,12 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 04:27:53 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/09 12:18:22 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/12 06:34:59 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+#include <cwchar>
 #include <deque>
 #include <sstream>
 #include <vector>
@@ -40,9 +41,41 @@ int ParssNumbers(char **Table, std::vector<int> &Vector, std::deque<int> &Deque)
     return 1;
 }
 
-void OPETATION()
+void OPETATION(std::vector<int> Vector)
 {
+    std::vector<int> pairs;
+    std::vector<std::vector<int> > mainOne;
 
+    std::vector<int>::const_iterator it;
+    it = Vector.begin();
+    while (it != Vector.end()) 
+    {
+       std::vector<int>::const_iterator tmp = it;
+       int i = 0;
+       while(i < 2 && tmp != Vector.end())
+       {
+            pairs.push_back(*tmp); 
+            tmp++;
+            i++;
+       }
+       mainOne.push_back(pairs);
+       pairs.clear();
+       it = tmp;
+    }
+    std::vector<std::vector<int> >::const_iterator itVectorOFVector = mainOne.begin();
+    while (itVectorOFVector != mainOne.end()) 
+    {
+        std::vector<int>::const_iterator p = itVectorOFVector->begin();
+        int i = 0;
+        while (p != itVectorOFVector->end()) 
+        {
+           std::cout << *p<<" ";
+           p++;
+        }
+        itVectorOFVector++;
+        i++;
+        std::cout<<std::endl;
+    }
 }
 
 void DisplayContainers(std::vector<int> const &DataVector, std::deque<int> const &DataDeque)
@@ -77,8 +110,8 @@ int main(int ac, char **av)
         return 1;
     }
     
-    DisplayContainers(DataVector, DataDeque);
-    OPETATION();
+    /* DisplayContainers(DataVector, DataDeque); */
+    OPETATION(DataVector);
     std::this_thread::sleep_for(std::chrono::seconds(1));
     GetTakingTime(Start);
     

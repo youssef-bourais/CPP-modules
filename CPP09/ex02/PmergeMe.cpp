@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 04:29:11 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/12 01:53:37 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/12 05:47:46 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,24 +89,28 @@ void InsertionSort(int arr[], int size)
     }
 }
 
+/**/
+/* int main() */
+/* { */
+/*     int arr[] = {100, -1337, 10, 5, 33, 97, 8, 10, 22, -4, -3000}; */
+/*     int size = 11; */
+/**/
+/*     int i = 0; */
+/*     for (int i = 0; i < size; i++)  */
+/*     { */
+/*         std::cout << arr[i]<<" "; */
+/*     } */
+/*     std::cout<<std::endl; */
+/*     MergeSort(arr, size);     */
+/**/
+/*     InsertionSort(arr, size); */
+/*     for (int i = 0; i < size; i++)  */
+/*     { */
+/*         std::cout << arr[i]<<" "; */
+/*     } */
+/*     std::cout<<std::endl; */
+/* } */
+/**/
+/**/
 
-int main()
-{
-    int arr[] = {100, -1337, 10, 5, 33, 97, 8, 10, 22, -4, -3000};
-    int size = 11;
 
-    int i = 0;
-    for (int i = 0; i < size; i++) 
-    {
-        std::cout << arr[i]<<" ";
-    }
-    std::cout<<std::endl;
-    MergeSort(arr, size);    
-  
-    InsertionSort(arr, size);
-    for (int i = 0; i < size; i++) 
-    {
-        std::cout << arr[i]<<" ";
-    }
-    std::cout<<std::endl;
-}
