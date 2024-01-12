@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 04:29:11 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/12 01:22:45 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/12 01:53:37 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void merge(int arr1[], int arr2[], int arr[], int size)
 
 }
 
-void mergesort(int arr[], int size)
+void MergeSort(int arr[], int size)
 {
     int i;
       
@@ -69,9 +69,24 @@ void mergesort(int arr[], int size)
             arr2[k++] = arr[i];
         i++;
     }
-    mergesort(arr1, midle);
-    mergesort(arr2, size - midle);
+    MergeSort(arr1, midle);
+    MergeSort(arr2, size - midle);
     merge(arr1, arr2, arr, size);
+}
+
+void InsertionSort(int arr[], int size)
+{
+    for (int i = 0 ;i < size; i++) 
+    {
+        int j = i;
+        while (j > 0 && arr[j - 1] > arr[j]) 
+        {
+            int tmp = arr[j - 1];
+            arr[j - 1] = arr[j];
+            arr[j] = tmp;
+            j--;
+        }
+    }
 }
 
 
@@ -86,7 +101,9 @@ int main()
         std::cout << arr[i]<<" ";
     }
     std::cout<<std::endl;
-    mergesort(arr, size);    
+    MergeSort(arr, size);    
+  
+    InsertionSort(arr, size);
     for (int i = 0; i < size; i++) 
     {
         std::cout << arr[i]<<" ";
