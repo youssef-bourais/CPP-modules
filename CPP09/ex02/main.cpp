@@ -6,12 +6,13 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 04:27:53 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/13 14:02:32 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/13 15:13:03 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include <__errc>
+#include <climits>
 #include <cstddef>
 #include <cwchar>
 #include <deque>
@@ -22,9 +23,10 @@ long CheckError(std::string Arg)
 {
     long Number = -1;
     std::istringstream Num(Arg);
-    if(Num >> Number && (!Num.fail() && Num.eof()) && Number < INT_MAX && Number > -1 && Arg.find(".") == std::string::npos)
+    Num >> Number;
+    if ((!Num.fail() && Num.eof()) && Number < INT_MAX && Arg.find(".") == std::string::npos && Number >= 0)
         return Number;
-    return 0;
+    return -1;
 }
 
 int ParssNumbers(char **Table, std::vector<int> &Vector, std::deque<int> &Deque)
@@ -45,73 +47,40 @@ int ParssNumbers(char **Table, std::vector<int> &Vector, std::deque<int> &Deque)
     return 1;
 }
 
+
 /* template <typename T> */
-/* void InsertionSort(T &container)  */
+/* void InsertionSort(T &container) */
 /* { */
-/*     typename T::iterator it = container.begin();  // Use iterator */
-/**/
+/*     typename T::iterator it = container.begin();  */
 /*     while (it != container.end())  */
 /*     { */
-/*         typename T::value_type tmp = *it; */
-/*         typename T::iterator j = it; */
-/**/
-/*         while (j != container.begin() && *(j - 1) > tmp)  */
-/*         { */
-/*             *j = *(j - 1); */
-/*             --j; */
-/*         } */
-/*         *j = tmp; */
-/*         ++it; */
-/*     } */
+/*          typename  T::iterator jt = it; */
+/*          while (jt != container.begin() && *(jt - 1) > *(jt))  */
+/*          { */
+/*              int tmp = *(jt - 1); */
+/*              *(jt - 1) = *jt; */
+/*              *jt = tmp; */
+/*              jt--; */
+/*          } */
+/*          it++; */
+/*      } */
 /* } */
 
 template <typename T>
-void InsertionSort(T &container)
+void InsertionSort(T &container) 
 {
-    typename T::iterator it = container.begin(); 
-    while (it != container.end()) 
+    for (typename T::size_type i = 1; i < container.size(); ++i) 
     {
-         typename  T::iterator jt = it;
-         while (jt != container.begin() && *(--jt) > *(jt)) 
-         {
-             int tmp = *(--jt);
-             *(--jt) = *jt;
-             *(jt) = tmp;
-             jt--;
-         }
-         it++;
-     }
-
-    /* int i = 0; */
-    /* while (i < container.size())  */
-    /* { */
-    /*     int j = 0; */
-    /*      while (j > 0 && container[j] < container[j - 1]) */
-    /*      { */
-    /*          int tmp = container[j - 1]; */
-    /*          container[j - 1] = container[j]; */
-    /*          container[j] = tmp; */
-    /*          j--; */
-    /*      } */
-    /*      i++; */
-    /*     } */
+        typename T::value_type tmp = container[i];
+        typename T::size_type j = i;
+        while (j > 0 && container[j - 1] > tmp) 
+        {
+            container[j] = container[j - 1];
+            --j;
+        }
+        container[j] = tmp;
+    }
 }
-
-/* template <typename T> */
-/* void InsertionSort(T &container)  */
-/* { */
-/*     for (typename T::size_type i = 1; i < container.size(); ++i)  */
-/*     { */
-/*         typename T::value_type tmp = container[i]; */
-/*         typename T::size_type j = i; */
-/*         while (j > 0 && container[j - 1] > tmp)  */
-/*         { */
-/*             container[j] = container[j - 1]; */
-/*             --j; */
-/*         } */
-/*         container[j] = tmp; */
-/*     } */
-/* } */
 
 std::vector<std::vector<int> > OPETATION(std::vector<int>::const_iterator  VBeging, std::vector<int>::const_iterator VEnd)
 {
