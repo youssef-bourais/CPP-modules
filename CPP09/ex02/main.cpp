@@ -6,11 +6,13 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 04:27:53 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/12 08:24:59 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/13 14:02:32 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+#include <__errc>
+#include <cstddef>
 #include <cwchar>
 #include <deque>
 #include <sstream>
@@ -18,7 +20,7 @@
 
 long CheckError(std::string Arg)
 {
-    long Number = 0;
+    long Number = -1;
     std::istringstream Num(Arg);
     if(Num >> Number && (!Num.fail() && Num.eof()) && Number < INT_MAX && Number > -1 && Arg.find(".") == std::string::npos)
         return Number;
@@ -32,8 +34,10 @@ int ParssNumbers(char **Table, std::vector<int> &Vector, std::deque<int> &Deque)
     while (Table[i]) 
     {
         Value = CheckError(Table[i]);
-        if(!Value)
+        if(Value == -1)
+        {
             return 0;
+        }
         Vector.push_back(Value);
         Deque.push_back(Value);
         i++;
@@ -41,39 +45,105 @@ int ParssNumbers(char **Table, std::vector<int> &Vector, std::deque<int> &Deque)
     return 1;
 }
 
+/* template <typename T> */
+/* void InsertionSort(T &container)  */
+/* { */
+/*     typename T::iterator it = container.begin();  // Use iterator */
+/**/
+/*     while (it != container.end())  */
+/*     { */
+/*         typename T::value_type tmp = *it; */
+/*         typename T::iterator j = it; */
+/**/
+/*         while (j != container.begin() && *(j - 1) > tmp)  */
+/*         { */
+/*             *j = *(j - 1); */
+/*             --j; */
+/*         } */
+/*         *j = tmp; */
+/*         ++it; */
+/*     } */
+/* } */
+
+template <typename T>
+void InsertionSort(T &container)
+{
+    typename T::iterator it = container.begin(); 
+    while (it != container.end()) 
+    {
+         typename  T::iterator jt = it;
+         while (jt != container.begin() && *(--jt) > *(jt)) 
+         {
+             int tmp = *(--jt);
+             *(--jt) = *jt;
+             *(jt) = tmp;
+             jt--;
+         }
+         it++;
+     }
+
+    /* int i = 0; */
+    /* while (i < container.size())  */
+    /* { */
+    /*     int j = 0; */
+    /*      while (j > 0 && container[j] < container[j - 1]) */
+    /*      { */
+    /*          int tmp = container[j - 1]; */
+    /*          container[j - 1] = container[j]; */
+    /*          container[j] = tmp; */
+    /*          j--; */
+    /*      } */
+    /*      i++; */
+    /*     } */
+}
+
+/* template <typename T> */
+/* void InsertionSort(T &container)  */
+/* { */
+/*     for (typename T::size_type i = 1; i < container.size(); ++i)  */
+/*     { */
+/*         typename T::value_type tmp = container[i]; */
+/*         typename T::size_type j = i; */
+/*         while (j > 0 && container[j - 1] > tmp)  */
+/*         { */
+/*             container[j] = container[j - 1]; */
+/*             --j; */
+/*         } */
+/*         container[j] = tmp; */
+/*     } */
+/* } */
+
 std::vector<std::vector<int> > OPETATION(std::vector<int>::const_iterator  VBeging, std::vector<int>::const_iterator VEnd)
 {
     std::vector<int> pairs;
     std::vector<std::vector<int> > mainOne;
-    
+
     std::vector<int>::const_iterator it;
     it = VBeging;
 
-    /* while (it != VEnd) */
-    /* { */
-       std::vector<int>::const_iterator tmp = it;
-       int i = 0;
-       while(i < 2 && it != VEnd)
-       {
-            pairs.push_back(*tmp); 
-            it++;
-            i++;
-       }
-       mainOne.push_back(pairs);
-       /* pairs.clear(); */
-       /* it = tmp; */
-    /* } */
+    std::vector<int>::const_iterator tmp = VBeging;
+    int i = 0;
+    while(i < 2 && tmp != VEnd)
+    {
+        pairs.push_back(*tmp); 
+        tmp++;
+        i++;
+    }
+    InsertionSort(pairs);
+    mainOne.push_back(pairs);
     if(VBeging != VEnd)
     {
-        std::vector<std::vector<int> > result = OPETATION(VBeging + 1, VEnd);
-        return result;
-
+        if(VBeging + 2 < VEnd)
+        {
+            std::vector<std::vector<int> > result = OPETATION(VBeging + 2, VEnd);
+            mainOne.insert(mainOne.end(), result.begin(), result.end());
+        }
     }
     return mainOne;
- }
+}
 
 void DisplayContainers(std::vector<int> const &DataVector, std::deque<int> const &DataDeque)
-{    
+{
     std::cout << GREEN_TEXT;
     std::cout << "Vector Container: {";
     PrintSequence(DataVector);
@@ -94,32 +164,35 @@ void GetTakingTime(std::clock_t Start)
 int main(int ac, char **av)
 {
     std::clock_t Start = std::clock();
-    
+
     std::vector<int> DataVector;
     std::deque<int> DataDeque;
-    
+
     if(ac < 4 || !ParssNumbers(av, DataVector, DataDeque))
     {
         std::cerr<< "Error: a sequence of Positive Intiger Needed!!\n";
         return 1;
     }
-    
+
     /* DisplayContainers(DataVector, DataDeque); */
     std::vector<std::vector<int> > result = OPETATION(DataVector.begin(), DataVector.end());
     std::vector<std::vector<int> >::const_iterator it = result.begin();
     while (it != result.end()) 
     {
-        std::vector<int>::const_iterator pair = it->begin();
-        while (pair != it->end()) 
+        std::vector<int>::const_iterator its = it->begin();
+        while (its != it->end()) 
         {
-            std::cout<< *pair<<" ";
-            pair++;
+            std::cout<< *its<<" ";
+            its++;
         }
+        std::cout<<std::endl;
         it++;
     }
     /* std::this_thread::sleep_for(std::chrono::seconds(1)); */
     GetTakingTime(Start);
-    
+
     return 0;
 }
+
+
 
