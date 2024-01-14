@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 04:29:11 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/13 13:29:29 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/14 05:54:31 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,11 @@ void InsertionSort(int arr[], int size)
     }
 }
 
-/**/
+
 /* int main() */
 /* { */
-/*     int arr[] = {100, -1337, 10, 5, 33, 97, 8, 10, 22, -4, -3000}; */
-/*     int size = 11; */
+/*     int arr[] = {5, 3, -4, 92, -18, 0}; */
+/*     int size = 6; */
 /**/
 /*     int i = 0; */
 /*     for (int i = 0; i < size; i++)  */
@@ -103,14 +103,14 @@ void InsertionSort(int arr[], int size)
 /*     std::cout<<std::endl; */
 /*     MergeSort(arr, size);     */
 /**/
-/*     InsertionSort(arr, size); */
+/*     * InsertionSort(arr, size); */ 
 /*     for (int i = 0; i < size; i++)  */
 /*     { */
 /*         std::cout << arr[i]<<" "; */
 /*     } */
 /*     std::cout<<std::endl; */
 /* } */
-/**/
-/**/
+
+
 
 

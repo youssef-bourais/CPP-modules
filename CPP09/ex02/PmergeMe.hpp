@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 04:28:20 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/09 12:03:33 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/14 07:47:46 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@
 #define GREEN_TEXT "\033[1;32m"
 
 template <typename T>
-void PrintSequence(const T &container)
+void PrintSequence(const T &container, std::string a)
 {
+    std::cout<<std::endl;
     typename T::const_iterator it = container.begin();
 
     std::cout << YELLOW_TEXT;
+    std::cout<< a<<": ";
 
     while (it != container.end())
     {
@@ -35,7 +37,8 @@ void PrintSequence(const T &container)
            std::cout<<", ";
     }
     std::cout << GREEN_TEXT;
-    std::cout << "}\n";
+    /* std::cout << "}\n"; */
+    std::cout << "\n";
 }
 
 
