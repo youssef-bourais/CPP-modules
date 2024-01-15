@@ -1,6 +1,6 @@
 NAME = PmergeMe
 
-SRCS = main.cpp PmergeMe.cpp
+SRCS = main.cpp PmergeMe.cpp Vector.cpp deque.cpp
 
 CC = c++ -std=c++98
 

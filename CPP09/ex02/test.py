@@ -140,7 +140,7 @@ def merge_insertion_sort(collection: list[int]) -> list[int]:
         pivot = collection[-1]
         result = binary_search_insertion(result, pivot)
 
-    # print(result)
+    print(result)
     """
     Insert the remaining items.
     In this case, 40 < 75 is sure because it has already been sorted.
@@ -168,6 +168,10 @@ def merge_insertion_sort(collection: list[int]) -> list[int]:
 
     return result
 
+
+
+
+
 # nums = [4, 3, 5, 1, 2]
 # print("\nOriginal list:")
 # print(nums)
@@ -176,7 +180,7 @@ def merge_insertion_sort(collection: list[int]) -> list[int]:
 # print(nums)
 nums = [5, 9, 10, 3, 4, 5, 178, 92, 46, 18, 0, 7, 97]
 print("\nOriginal list:")
-print(nums)
+# print(nums)
 # print("After applying Merge-insertion  Sort the said list becomes:")
 merge_insertion_sort(nums)
 # print(nums)

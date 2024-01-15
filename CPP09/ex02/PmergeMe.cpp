@@ -6,110 +6,66 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 04:29:11 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/14 05:54:31 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/15 06:03:09 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-#include <cstdlib>
 
-void merge(int arr1[], int arr2[], int arr[], int size)
+long CheckError(std::string Arg)
 {
-    int i = 0;
-    int l = 0;
-    int r = 0;
-    while (l < (size/2) && r < (size - (size / 2))) 
-    {
-        if(arr1[l] < arr2[r])
-        {
-            arr[i] = arr1[l];
-            l++;
-        }
-        else 
-        {
-            arr[i] = arr2[r];
-            r++;
-        }
-        i++;
-    }
-    while (l < size/2) 
-    {
-        arr[i] = arr1[l];
-        i++;
-        l++;
-    }
-    while (r < size - (size / 2)) 
-    {
-        arr[i] = arr2[r];
-        i++;
-        r++;
-    }
-
+    long Number = -1;
+    std::istringstream Num(Arg);
+    Num >> Number;
+    if ((!Num.fail() && Num.eof()) && Number < INT_MAX && Arg.find(".") == std::string::npos && Number >= 0)
+        return Number;
+    return -1;
 }
 
-void MergeSort(int arr[], int size)
+int ParssNumbers(char **Table, std::vector<int> &Vector, std::deque<int> &Deque)
 {
-    int i;
-      
-    if(size <= 1)
-        return;
-    
-    int midle = 0;
-    midle = size/2;
-    int arr1[midle];
-    int arr2[size - midle];
-    i = 0;
-    int j = 0;
-    int k = 0;
-    while (i < size) 
+    long Value = 0;
+    int i = 1;
+    while (Table[i]) 
     {
-        if(i < midle)
-            arr1[j++] = arr[i];
-        else
-            arr2[k++] = arr[i];
+        Value = CheckError(Table[i]);
+        if(Value == -1)
+        {
+            return 0;
+        }
+        Vector.push_back(Value);
+        Deque.push_back(Value);
         i++;
     }
-    MergeSort(arr1, midle);
-    MergeSort(arr2, size - midle);
-    merge(arr1, arr2, arr, size);
+    return 1;
 }
 
-void InsertionSort(int arr[], int size)
+void DisplayContainers(std::vector<int> const &DataVector, std::deque<int> const &DataDeque)
 {
-    for (int i = 0 ;i < size; i++) 
-    {
-        int j = i;
-        while (j > 0 && arr[j - 1] > arr[j]) 
-        {
-            int tmp = arr[j - 1];
-            arr[j - 1] = arr[j];
-            arr[j] = tmp;
-            j--;
-        }
-    }
+    std::cout << GREEN_TEXT;
+    PrintSequence(DataVector, "Vector container: ");
+    std::cout << GREEN_TEXT;
+    PrintSequence(DataDeque, "Vector container: ");
+}
+
+void GetTakingTime(std::clock_t Start)
+{
+    std::clock_t End = std::clock();
+    double Time = static_cast<double>((End - Start)*MICROSECONDS) / CLOCKS_PER_SEC;  
+    std::cout << YELLOW_TEXT; // Set text color to yellow
+    std::cout << "\nElapsed time: " << Time << " Microseconds" << std::endl;
 }
 
 
-/* int main() */
-/* { */
-/*     int arr[] = {5, 3, -4, 92, -18, 0}; */
-/*     int size = 6; */
-/**/
-/*     int i = 0; */
-/*     for (int i = 0; i < size; i++)  */
-/*     { */
-/*         std::cout << arr[i]<<" "; */
-/*     } */
-/*     std::cout<<std::endl; */
-/*     MergeSort(arr, size);     */
-/**/
-/*     * InsertionSort(arr, size); */ 
-/*     for (int i = 0; i < size; i++)  */
-/*     { */
-/*         std::cout << arr[i]<<" "; */
-/*     } */
-/*     std::cout<<std::endl; */
-/* } */
+
+
+
+
+
+
+
+
+
 
 
 
