@@ -6,11 +6,12 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 04:29:11 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/15 06:03:09 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/15 08:01:00 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+#include <sstream>
 
 long CheckError(std::string Arg)
 {
@@ -48,12 +49,11 @@ void DisplayContainers(std::vector<int> const &DataVector, std::deque<int> const
     PrintSequence(DataDeque, "Vector container: ");
 }
 
-void GetTakingTime(std::clock_t Start)
+double GetTakingTime(std::clock_t Start)
 {
     std::clock_t End = std::clock();
-    double Time = static_cast<double>((End - Start)*MICROSECONDS) / CLOCKS_PER_SEC;  
-    std::cout << YELLOW_TEXT; // Set text color to yellow
-    std::cout << "\nElapsed time: " << Time << " Microseconds" << std::endl;
+    double Time = static_cast<double>(End - Start)*MICROSECONDS /  static_cast<double>(CLOCKS_PER_SEC);  
+    return Time;
 }
 
 

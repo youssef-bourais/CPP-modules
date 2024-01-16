@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 04:28:20 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/15 06:55:40 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/16 04:10:18 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,19 @@
 
 #include <iostream>
 #include <deque>
-#include <sys/wait.h>
 #include <vector>
-#include <sstream>
 
-#define MICROSECONDS 1000000LL
+#define MICROSECONDS 1000000
 #define YELLOW_TEXT "\033[1;33m"
 #define GREEN_TEXT "\033[1;32m"
 
 template <typename T>
 void PrintSequence(const T &container, std::string a)
 {
-    std::cout<<std::endl;
     typename T::const_iterator it = container.begin();
 
     std::cout << YELLOW_TEXT;
-    std::cout<< a<<": ";
+    std::cout<< a;
 
     while (it != container.end())
     {
@@ -41,18 +38,22 @@ void PrintSequence(const T &container, std::string a)
            std::cout<<", ";
     }
     std::cout << GREEN_TEXT;
-    /* std::cout << "}\n"; */
     std::cout << "\n";
 }
 
 template <typename T>
 void SwapElement(T &Container)
 {
-    if(Container.size() > 1 && Container[0] > Container[1])
+    int i = 0;
+    while (i < (int)Container.size()) 
     {
-        int tmp = Container[0];
-        Container[0] = Container[1];
-        Container[1] = tmp;
+        if(Container.size() > 1 && Container[i] > Container[i + 1])
+        {
+            /* std::vector<int> tmp = Container[i][0]; */
+            Container[i] = Container[i + 1];
+            /* Container[i + 1] = tmp; */
+        }
+        i += 2;
     }
 }
 
@@ -70,9 +71,9 @@ void PrintMainContainer(const Container &result)
         int j = 0;
         while (jt != it->end())
         {
-            if (j == 0)
-                std::cout << *jt << " ";
-            else
+            /* if (j == 0) */
+                /* std::cout << *jt << " "; */
+            /* else */
                 std::cout << *jt << std::endl;
             jt++;
             j++;
@@ -192,42 +193,27 @@ void InsertingElement(Container1 &main, Container2 &result, int holder)
         main.insert(main.begin() + IndexToInsert, holder);
 
     }
-    /* PrintSequence(main, "after: "); */
     InsertPaindInMain(main, result);
 }
 
 
+void swap(std::vector<std::vector<int> > &T);
+void mergeInpairs(std::vector<std::vector<int> >& elems);
 
 // Vector
 void MergeInsertSortVector(std::vector<int> &DataVector);
-int ParssNumbers(char **Table, std::vector<int> &Vector, std::deque<int> &Deque);
-/* int BinarySearch(std::vector<int> const &ARRAY, int Pivot); */
-/* void InsertPaindInMain(std::vector<int> &main, std::vector<std::vector<int> > &result); */
-/* void InsertingElement(std::vector<int> &main, std::vector<std::vector<int> > &result, int holder); */
-std::vector<std::vector<int> > DevideAndSortPairsRecursively(std::vector<int>::const_iterator  VBeging, std::vector<int>::const_iterator VEnd);
-/* void mergesort(std::vector<std::vector<int> > &T); */
-/* void merge(std::vector<std::vector<int> > &Vec1, std::vector<std::vector<int> > &Vec2, std::vector<std::vector<int> > &Vec); */
-/**/
-/**/
+/* std::vector<std::vector<int> > DevideAndSortPairsRecursively(std::vector<int>::const_iterator  VBeging, std::vector<int>::const_iterator VEnd); */
 
 // Deque
-
 void MergeInsertSortDeque(std::deque<int> &DataDeque);
-/* void InsertingElement(std::deque<int> &main, std::deque<std::deque<int> > &result, int holder); */
-/* void InsertPaindInMain(std::deque<int> &main, std::deque<std::deque<int> > &result); */
-/* int BinarySearch(std::deque<int> const &ARRAY, int Pivot); */
 std::deque<std::deque<int> > DevideAndSortPairsRecursively(std::deque<int>::const_iterator  VBeging, std::deque<int>::const_iterator VEnd);
-/* void mergesort(std::deque<std::deque<int> > &T); */
-/* void merge(std::deque<std::deque<int> > &Vec1, std::deque<std::deque<int> > &Vec2, std::deque<std::deque<int> > &Vec); */
-
-
-
 
 long CheckError(std::string Arg);
 int ParssNumbers(char **Table, std::vector<int> &Vector, std::deque<int> &Deque);
 void DisplayContainers(std::vector<int> const &DataVector, std::deque<int> const &DataDeque);
-void GetTakingTime(std::clock_t Start);
+double GetTakingTime(std::clock_t Start);
 void PrintMainVector(std::vector<std::vector<int> > const &result);
 
+std::vector<std::vector<int> > convertTo2D(std::vector<int> &flatVector, size_t elementsPerRow); 
 
 #endif
