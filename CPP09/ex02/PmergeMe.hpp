@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 04:28:20 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/16 04:10:18 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/17 10:32:16 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,14 @@
 #include <deque>
 #include <vector>
 
+#define WHITE_TEXT "\033[1;37m"
 #define MICROSECONDS 1000000
 #define YELLOW_TEXT "\033[1;33m"
 #define GREEN_TEXT "\033[1;32m"
+
+#define RED_TEXT "\033[1;31m"
+#define BLUE_TEXT "\033[1;34m"
+#define RESET_TEXT "\033[0m"
 
 template <typename T>
 void PrintSequence(const T &container, std::string a)
@@ -56,7 +61,6 @@ void SwapElement(T &Container)
         i += 2;
     }
 }
-
 
 template <typename Container>
 void PrintMainContainer(const Container &result)

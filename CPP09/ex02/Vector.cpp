@@ -6,58 +6,95 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 05:31:35 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/16 05:57:42 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:22:04 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include <vector>
 
-void UnflatteningVecOneToTwo(std::vector<std::vector<int> > &paired)
+void UnflatteningVecTwoToOne(std::vector<std::vector<int> > &Vec)
 {
-    std::vector<std::vector<int> > new_elems;
-
-    for (std::vector<std::vector<int> >::iterator it = paired.begin(); it != paired.end(); it += 2)
-    {
+    std::vector<std::vector<int> > MergedVec;
+    for (std::vector<std::vector<int> >::iterator it = Vec.begin(); it != Vec.end(); it += 2)
+    { 
         std::vector<int> pair;
-        for (int i = 0; i < (int)it->size() || i < (int)(it + 1)->size(); ++i)
-        {
-            if (i < (int)it->size())
-                pair.push_back((*it)[i]);
+        for (std::vector<int>::iterator subit = it->begin(); subit != it->end(); subit++)
+            pair.push_back((*subit));
+        for (std::vector<int>::iterator subit = (it + 1)->begin();subit != (it + 1)->end(); subit++)
+            pair.push_back((*subit));
+        MergedVec.push_back(pair);
+        pair.clear();
+    }
+    Vec.clear();
+    Vec = MergedVec;
+}
 
-            if (i < (int)(it + 1)->size())
-                pair.push_back((*(it + 1))[i]);
+void FlatteningVecOneToTwo(std::vector<std::vector<int> > &paired)
+{
+    std::vector<std::vector<int> > NewVec;
+    std::vector<int> pair;
+    int midle = paired.at(0).size()/2;
+    if(!paired.at(0).size())
+        return;
+
+    for (std::vector<std::vector<int> >::iterator outur = paired.begin();outur != paired.end(); outur++)
+    {
+        std::vector<int>::iterator Iner1 = outur->begin();
+        int i = 0;
+        while(i < midle)
+        {
+            pair.push_back(*Iner1);
+            Iner1++;
+            i++;
         }
-        new_elems.push_back(pair);
+        NewVec.push_back(pair);
+        pair.clear();
+        while (Iner1 != outur->end()) 
+        {
+            pair.push_back(*Iner1);
+            Iner1++;
+        }
+        NewVec.push_back(pair);
         pair.clear();
     }
     paired.clear();
-    paired = new_elems;
+    paired = NewVec;
 }
 
-void FlatteningVecTwoToOne(std::vector<std::vector<int> > &paired)
+void PrintInerVector(std::vector<int> Vec)
 {
-    std::vector<std::vector<int> > new_elems;
-
-    int i = 0;
-    for (std::vector<std::vector<int> >::iterator outur = paired.begin(); i < paired.size() && outur != paired.end(); outur ++)
-    {
-        std::vector<int>::iterator Iner = outur->begin();
-        std::vector<int> pair;
-        for (int i = 0; i < (int)outur->size(); ++i)
-        {
-            pair.push_back((*Iner));
-        }
-        if(i + 1 == paired.size()/2 || i + 1 == paired.size())
-            new_elems.push_back(pair);
-        /* pair.clear(); */
-        i++;
-    }
-    paired.clear();
-    paired = new_elems;
+    std::vector<int>::iterator it = Vec.begin();
+    std::cout << WHITE_TEXT <<"["<< RESET_TEXT;
+	while (it != Vec.end())
+	{
+		std::cout << *it ;
+		if (it + 1 != Vec.end())
+			std::cout << ", ";
+		it++;
+	}
+    std::cout << WHITE_TEXT<<"]" << RESET_TEXT;
 }
 
-void DevideAndSortPairsRecursively(std::vector<std::vector<int> > &Vec)
+void PrintOutorVector(std::vector<std::vector<int> >& Vec)
+{
+    std::vector<std::vector<int> >::iterator it = Vec.begin();
+    std::cout << BLUE_TEXT <<"[" << RESET_TEXT;
+	while (it != Vec.end())
+	{
+        PrintInerVector(*it);
+		if (it + 1 != Vec.end())
+        {
+            std::cout << YELLOW_TEXT;
+			std::cout << ", ";
+            std::cout << RESET_TEXT;
+        }
+		it++;
+	}
+  std::cout << BLUE_TEXT <<"]" << RESET_TEXT << std::endl;
+}
+
+void Sort(std::vector<std::vector<int> > &Vec)
 {
     std::vector<int> rest;
     std::vector<std::vector<int> > main;
@@ -68,38 +105,18 @@ void DevideAndSortPairsRecursively(std::vector<std::vector<int> > &Vec)
         rest = Vec.back(); 
         Vec.pop_back();
     }
+    PrintOutorVector(Vec);
     swap(Vec);
-    UnflatteningVecOneToTwo(Vec); // make size/2 pairs;
-
-    /* std::vector<std::vector<int> >::iterator it = mainOne.begin(); */
-    /* while (it != mainOne.end())  */
-    /* { */
-    /*     std::vector<int>::iterator itt = it->begin(); */
-    /*     while (itt != it->end())  */
-    /*     { */
-    /*         std::cout<< *itt<<" "; */
-    /*         itt++; */
-    /*     } */
-    /*     std::cout<<std::endl; */
-    /*     it++; */
-    /* }  */
+    PrintOutorVector(Vec);
+    UnflatteningVecTwoToOne(Vec);
+    PrintOutorVector(Vec);
+    std::cout<<std::endl;
+    
     if(Vec.size() > 1)
-    {
-        DevideAndSortPairsRecursively(Vec);
-    }
+        Sort(Vec);
     if(Vec.at(0).size() > 1)
-        FlatteningVecTwoToOne(Vec);
-    /* std::vector<std::vector<int> >::iterator tmp = Vec.begin(); */
-    /* mainOne.push_back(pairs); */
-    /* if(VBeging != VEnd)  */
-    /* { */
-    /*     if(VBeging + 2 < VEnd) //  */
-    /*     { */
-    /* DevideAndSortPairsRecursively(Vec); */
-    /* mainOne.insert(mainOne.end(), result.begin(), result.end()); */
-    /*     } */
-    /* } */
-    /* mergesort(mainOne); */
+        FlatteningVecOneToTwo(Vec);
+    PrintOutorVector(Vec);
 }
 
 void swap(std::vector<std::vector<int> > &T) 
@@ -129,7 +146,7 @@ void MergeInsertSortVector(std::vector<int> &DataVector)
         VecOfVec.push_back(tmp);
         it++;
     }
-    DevideAndSortPairsRecursively(VecOfVec);
+    Sort(VecOfVec);
     /* PrintMainContainer(result); */
     DataVector.clear();
     /* InsertingElement(DataVector, result, holder); */
