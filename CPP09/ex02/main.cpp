@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 04:27:53 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/17 18:25:09 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:31:46 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int main(int ac, char **av)
     std::deque<std::deque<int> > resultd = MergeInsertSortDeque(DataDeque);
     
     std::cout<<"After : "<<std::endl;
-    PrintOutorContainer(resultd);
-    std::cout <<std::endl;
+    /* PrintOutorContainer(resultd); */
+    /* std::cout <<std::endl; */
     std::cout << "Time to process a range of "<<DataDeque.size()<<" elements with std::deque : "<<std::fixed<<std::setprecision(3)<<GetTakingTime(Start1)<<"us\n";
     return 0;
 }
