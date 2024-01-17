@@ -6,12 +6,14 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 07:16:31 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/09 06:53:36 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/17 19:06:13 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 #include <charconv>
+#include <iomanip>
+#include <ios>
 
 
 int StorData(std::list<KeyValue> &DataContainer, char TxtSeparator, std::string FilePath)
@@ -153,7 +155,7 @@ void PrintResult(std::list<KeyValue> &Data, std::list<KeyValue> &Txt)
         else
         {
             Value = ValueMultipliedByTheExchangeRate(Data, it->key, it->value);
-            std::cout <<it->key <<" => "<< it->value << " = "<<Value<<std::endl;
+            std::cout <<it->key <<" => "<< it->value << " = " <<std::fixed<<std::setprecision(2)<<Value<<std::endl;
         }
     }
 }

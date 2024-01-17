@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 07:16:39 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/09 06:53:34 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:57:43 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ struct KeyValue
 #define MIN_DAY 1
 #define MAX_DAY 31
 #define DACH '-' 
-
 
 void PrintDataBase(std::list<KeyValue> const database);
 
