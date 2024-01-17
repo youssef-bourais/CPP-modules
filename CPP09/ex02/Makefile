@@ -4,7 +4,7 @@ SRCS = main.cpp PmergeMe.cpp Vector.cpp deque.cpp
 
 CC = c++ -std=c++98
 
-CFLAGS = -Wall  -Wextra  -O3 -O2 -fsanitize=address -g
+CFLAGS = -Wall  -Wextra  -O3 -O2 #-fsanitize=address -g
 
 OBJS = ${SRCS:.cpp=.o}
 

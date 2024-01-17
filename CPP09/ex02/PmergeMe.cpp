@@ -6,12 +6,11 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 04:29:11 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/15 08:01:00 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:42:03 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-#include <sstream>
 
 long CheckError(std::string Arg)
 {
@@ -41,32 +40,10 @@ int ParssNumbers(char **Table, std::vector<int> &Vector, std::deque<int> &Deque)
     return 1;
 }
 
-void DisplayContainers(std::vector<int> const &DataVector, std::deque<int> const &DataDeque)
-{
-    std::cout << GREEN_TEXT;
-    PrintSequence(DataVector, "Vector container: ");
-    std::cout << GREEN_TEXT;
-    PrintSequence(DataDeque, "Vector container: ");
-}
-
 double GetTakingTime(std::clock_t Start)
 {
     std::clock_t End = std::clock();
-    double Time = static_cast<double>(End - Start)*MICROSECONDS /  static_cast<double>(CLOCKS_PER_SEC);  
+    double Time = static_cast<double>(End - Start)*MICROSECONDS / static_cast<double>(CLOCKS_PER_SEC);  
     return Time;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

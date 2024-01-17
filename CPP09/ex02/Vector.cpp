@@ -6,12 +6,11 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 05:31:35 by ybourais          #+#    #+#             */
-/*   Updated: 2024/01/17 11:22:04 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:22:09 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-#include <vector>
 
 void UnflatteningVecTwoToOne(std::vector<std::vector<int> > &Vec)
 {
@@ -62,64 +61,39 @@ void FlatteningVecOneToTwo(std::vector<std::vector<int> > &paired)
     paired = NewVec;
 }
 
-void PrintInerVector(std::vector<int> Vec)
+void CreatTwoChainVec(std::vector<std::vector<int> > &Vec, std::vector<std::vector<int> > &Main, std::vector<std::vector<int> > &paind)
 {
-    std::vector<int>::iterator it = Vec.begin();
-    std::cout << WHITE_TEXT <<"["<< RESET_TEXT;
-	while (it != Vec.end())
-	{
-		std::cout << *it ;
-		if (it + 1 != Vec.end())
-			std::cout << ", ";
-		it++;
-	}
-    std::cout << WHITE_TEXT<<"]" << RESET_TEXT;
-}
-
-void PrintOutorVector(std::vector<std::vector<int> >& Vec)
-{
-    std::vector<std::vector<int> >::iterator it = Vec.begin();
-    std::cout << BLUE_TEXT <<"[" << RESET_TEXT;
-	while (it != Vec.end())
-	{
-        PrintInerVector(*it);
-		if (it + 1 != Vec.end())
-        {
-            std::cout << YELLOW_TEXT;
-			std::cout << ", ";
-            std::cout << RESET_TEXT;
-        }
-		it++;
-	}
-  std::cout << BLUE_TEXT <<"]" << RESET_TEXT << std::endl;
-}
-
-void Sort(std::vector<std::vector<int> > &Vec)
-{
-    std::vector<int> rest;
-    std::vector<std::vector<int> > main;
-    std::vector<std::vector<int> > paind;
-   
-    if(Vec.size() % 2 != 0)
+    int i = 0;    
+    for (std::vector<std::vector<int> >::iterator it = Vec.begin();it != Vec.end();it++) 
     {
-        rest = Vec.back(); 
-        Vec.pop_back();
+        if(i % 2 != 0)
+            Main.push_back(*it);
+        else 
+            paind.push_back(*it);
+        i++;
     }
-    PrintOutorVector(Vec);
-    swap(Vec);
-    PrintOutorVector(Vec);
-    UnflatteningVecTwoToOne(Vec);
-    PrintOutorVector(Vec);
-    std::cout<<std::endl;
-    
-    if(Vec.size() > 1)
-        Sort(Vec);
-    if(Vec.at(0).size() > 1)
-        FlatteningVecOneToTwo(Vec);
-    PrintOutorVector(Vec);
 }
 
-void swap(std::vector<std::vector<int> > &T) 
+bool Compare(std::vector<int> a, std::vector<int> b)
+{
+  return (a.back() <= b.back());
+}
+
+void InsertPaindInMain(std::vector<std::vector<int> > &main, std::vector<std::vector<int> > &Paind)
+{    
+    std::vector<std::vector<int> >::iterator it = Paind.begin();
+    while (it != Paind.end()) 
+    {
+        std::vector<std::vector<int> >::iterator insertionPoint = std::lower_bound(main.begin(), main.end(), *it, Compare);
+        if (insertionPoint != main.end()) 
+            main.insert(insertionPoint, *it);
+        else
+            main.push_back(*it);
+        it++;
+    }
+}
+
+void Swap(std::vector<std::vector<int> > &T) 
 {
     std::vector<std::vector<int> >::iterator it =  T.begin();
     while (it != T.end()) 
@@ -127,14 +101,36 @@ void swap(std::vector<std::vector<int> > &T)
         std::vector<int>::iterator it1 = it->end() - 1;
         std::vector<int>::iterator it2 = ((it + 1)->end() - 1);
         if(*it1 > *it2)
-        {
 			std::swap(*it, *(it + 1));
-        }
         it += 2;
     }
 }
 
-void MergeInsertSortVector(std::vector<int> &DataVector)
+void SortVector(std::vector<std::vector<int> > &Vec)
+{
+    std::vector<int> rest;
+    std::vector<std::vector<int> > main;
+    std::vector<std::vector<int> > paind;
+    if(Vec.size() % 2 != 0)
+    {
+        rest = Vec.back(); 
+        Vec.pop_back();
+    }
+    Swap(Vec);
+    UnflatteningVecTwoToOne(Vec);
+    if(Vec.size() > 1)
+        SortVector(Vec);
+    if(Vec.at(0).size() > 1)
+        FlatteningVecOneToTwo(Vec);
+    CreatTwoChainVec(Vec, main, paind);
+    if(rest.size())
+        paind.push_back(rest);
+    InsertPaindInMain(main, paind);
+    Vec.clear();
+    Vec = main; 
+}
+
+std::vector<std::vector<int> > MergeInsertSortVector(std::vector<int> &DataVector)
 {    
     std::vector<std::vector<int> > result;
     std::vector<std::vector<int> > VecOfVec;
@@ -146,9 +142,8 @@ void MergeInsertSortVector(std::vector<int> &DataVector)
         VecOfVec.push_back(tmp);
         it++;
     }
-    Sort(VecOfVec);
-    /* PrintMainContainer(result); */
+    SortVector(VecOfVec);
     DataVector.clear();
-    /* InsertingElement(DataVector, result, holder); */
+    return VecOfVec;
 }
 
