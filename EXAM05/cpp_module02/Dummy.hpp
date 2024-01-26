@@ -11,7 +11,7 @@ class Dummy : public ATarget
         Dummy();
         ~Dummy();
         
-        Dummy *clone() const;
+        ATarget *clone() const;
 };
 
 #endif

@@ -2,6 +2,7 @@
 
 
 #include "Fwoosh.hpp"
+#include "ASpell.hpp"
 
 Fwoosh::Fwoosh() : ASpell("Fwoosh", "fwooshed") 
 {
@@ -11,9 +12,9 @@ Fwoosh::~Fwoosh()
 {
 }
 
-Fwoosh* Fwoosh::clone() const
+ASpell* Fwoosh::clone() const
 {
-    return new Fwoosh;
+    return new Fwoosh();
 }
 
 

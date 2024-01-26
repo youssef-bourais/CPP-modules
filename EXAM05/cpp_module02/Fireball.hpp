@@ -10,7 +10,7 @@ class Fireball : public ASpell
         Fireball();
         ~Fireball();
         
-        Fireball* clone() const;
+        ASpell* clone() const;
 };
 
 

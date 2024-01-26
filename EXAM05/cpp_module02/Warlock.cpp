@@ -1,20 +1,23 @@
 
 #include "Warlock.hpp"
+#include "SpellBook.hpp"
 
-Warlock::Warlock(const std::string &name, const std::string &title) : _name(name), _title(title)
+Warlock::Warlock(const std::string &name, const std::string &title)
 {
+    _name = name;
+    _title = title;
     std::cout<< _name<<": This looks like another boring day."<<std::endl;
 }
 
 Warlock::~Warlock()
 {
     std::cout<< _name<<": My job here is done!"<<std::endl;
-    std::map<std::string, ASpell *>::iterator it = BookOfSpells.begin();
-    while (it != BookOfSpells.end()) 
-    {
-        /* delete it->second; */
-        it ++;
-    }
+    /* std::map<std::string, ASpell *>::iterator it = BookOfSpells.begin(); */
+    /* while (it != BookOfSpells.end())  */
+    /* { */
+    /*     * delete it->second; */
+    /*     it ++; */
+    /* } */
 }
 
 /**/
@@ -65,24 +68,17 @@ void Warlock::setTitle(const std::string &str)
 void Warlock::learnSpell(ASpell *spell)
 {
     if(spell)
-        if(BookOfSpells.find(spell->getName()) == BookOfSpells.end())
-            BookOfSpells[spell->getName()] = spell->clone();
+        this->spellofbook.learnSpell(spell); 
 }
 
 void Warlock::forgetSpell(std::string spellname)
 {
-    if(BookOfSpells.find(spellname) != BookOfSpells.end())
-    {
-        ASpell *tmp = BookOfSpells[spellname];
-        BookOfSpells.erase(BookOfSpells.find(spellname));
-        delete tmp;
-    }
+    this->spellofbook.forgetSpell(spellname);
 }
 
 void Warlock::launchSpell(std::string spellname, const ATarget &Target)
 {
-    if(BookOfSpells.find(spellname) != BookOfSpells.end())
-        BookOfSpells[spellname]->launch(Target);
+    if(spellofbook.createSpell(spellname))
+        spellofbook.createSpell(spellname)->launch(Target);
 }
-
 

@@ -4,10 +4,7 @@
 #define WARLOCK_HPP
 
 #include "ASpell.hpp"
-#include <cmath>
-#include <iostream>
-
-#include <map>
+#include "SpellBook.hpp"
 
 class Warlock
 {
@@ -16,7 +13,7 @@ class Warlock
         std::string _title;
         Warlock(const Warlock &copy);
         Warlock &operator=(const Warlock &src);
-        std::map<std::string, ASpell *> BookOfSpells;
+        SpellBook spellofbook;
     public:
         Warlock(const std::string &name, const std::string &title);
         ~Warlock();
