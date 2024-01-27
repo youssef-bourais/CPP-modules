@@ -6,7 +6,7 @@
 /*   By: ybourais <ybourais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:26:48 by ybourais          #+#    #+#             */
-/*   Updated: 2023/10/02 15:27:57 by ybourais         ###   ########.fr       */
+/*   Updated: 2024/01/27 16:10:48 by ybourais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,4 @@ int main()
         club.setType("some other type of club");
         jim.attack();
     }
-
 }

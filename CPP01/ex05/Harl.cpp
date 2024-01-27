@@ -22,8 +22,21 @@ void Harl::error(void)
     std::cout<<"this is unacceptable! I want to speak to the manager now."<<std::endl;
 }
 
-
 void Harl::complain(std::string level)
 {
+    std::string tab[4] = {"DEBUG", "INFO", "WARNING", "ERROR"}; 
+    array_func functs[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
+    int i = 0;
+    while (i < 4) 
+    {
+        if(tab[i] == level)
+        {
+            (this->*functs[i])();
+            return;
+        }
+        i++;
+    }
+    std::cout<<"level didn't match"<<std::endl;
 }
+

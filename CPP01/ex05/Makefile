@@ -1,6 +1,6 @@
 NAME = filex
 
-SRCS = main.cpp tool.cpp
+SRCS = main.cpp Harl.cpp
 
 CC = c++ -std=c++98
 
